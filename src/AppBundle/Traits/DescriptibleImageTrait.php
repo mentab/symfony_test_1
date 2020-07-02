@@ -3,7 +3,6 @@
 namespace AppBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Traits\DescriptibleTextTrait;
 
 trait DescriptibleImageTrait
 {
