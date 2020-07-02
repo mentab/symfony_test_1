@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\DescriptibleTrait;
 
 /**
  * Alliance
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Alliance
 {
+    use DescriptibleTrait;
+
     /**
      * @var int
      *
@@ -20,20 +23,6 @@ class Alliance
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
 
     /**
      * @var string
@@ -48,7 +37,6 @@ class Alliance
      * @ORM\Column(name="member", type="string", length=255)
      */
     private $member;
-
 
     /**
      * Get id
