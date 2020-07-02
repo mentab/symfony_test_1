@@ -70,7 +70,6 @@ class Score
      */
     private $researchScore;
 
-
     /**
      * Get id
      *

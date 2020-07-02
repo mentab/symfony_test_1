@@ -35,7 +35,6 @@ class UnitAttackType
      */
     private $attackType;
 
-
     /**
      * Get id
      *

@@ -42,7 +42,6 @@ class TroopQueue
      */
     private $resource;
 
-
     /**
      * Get id
      *

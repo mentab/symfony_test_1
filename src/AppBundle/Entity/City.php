@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\DescriptibleTextTrait;
+use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
  * City
@@ -12,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class City
 {
+    use DescriptibleTextTrait, DescriptibleImageTrait;
+
     /**
      * @var int
      *
@@ -20,20 +24,6 @@ class City
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255)
-     */
-    private $image;
 
     /**
      * @var string
@@ -90,7 +80,6 @@ class City
      * @ORM\Column(name="research", type="string", length=255)
      */
     private $research;
-
 
     /**
      * Get id

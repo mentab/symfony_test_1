@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\DescriptibleTextTrait;
 
 /**
  * AttackType
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AttackType
 {
+    use DescriptibleTextTrait;
+
     /**
      * @var int
      *
@@ -24,24 +27,9 @@ class AttackType
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="offset", type="string", length=255)
      */
     private $offset;
-
 
     /**
      * Get id
@@ -51,54 +39,6 @@ class AttackType
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return AttackType
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return AttackType
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

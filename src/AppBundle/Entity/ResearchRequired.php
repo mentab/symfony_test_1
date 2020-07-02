@@ -35,7 +35,6 @@ class ResearchRequired
      */
     private $research;
 
-
     /**
      * Get id
      *

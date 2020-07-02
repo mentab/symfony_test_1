@@ -35,7 +35,6 @@ class UnitQueue
      */
     private $time;
 
-
     /**
      * Get id
      *

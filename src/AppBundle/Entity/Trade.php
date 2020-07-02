@@ -42,7 +42,6 @@ class Trade
      */
     private $asking;
 
-
     /**
      * Get id
      *

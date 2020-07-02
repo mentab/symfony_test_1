@@ -35,7 +35,6 @@ class BuildingRequired
      */
     private $building;
 
-
     /**
      * Get id
      *

@@ -35,7 +35,6 @@ class ResourceGroup
      */
     private $resource;
 
-
     /**
      * Get id
      *

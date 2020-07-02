@@ -35,7 +35,6 @@ class ResearchGroup
      */
     private $research;
 
-
     /**
      * Get id
      *

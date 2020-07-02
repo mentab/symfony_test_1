@@ -3,7 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Traits\DescriptibleTrait;
+use AppBundle\Traits\DescriptibleTextTrait;
+use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
  * Alliance
@@ -13,7 +14,7 @@ use AppBundle\Traits\DescriptibleTrait;
  */
 class Alliance
 {
-    use DescriptibleTrait;
+    use DescriptibleTextTrait, DescriptibleImageTrait;
 
     /**
      * @var int

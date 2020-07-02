@@ -35,7 +35,6 @@ class UnitDefenseType
      */
     private $defenseType;
 
-
     /**
      * Get id
      *

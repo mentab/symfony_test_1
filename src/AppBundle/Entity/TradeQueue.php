@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TradeQueu
  *
- * @ORM\Table(name="trade_queu")
+ * @ORM\Table(name="trade_queue")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TradeQueuRepository")
  */
-class TradeQueu
+class TradeQueue
 {
     /**
      * @var int
@@ -41,7 +41,6 @@ class TradeQueu
      * @ORM\Column(name="resource", type="string", length=255)
      */
     private $resource;
-
 
     /**
      * Get id

@@ -35,7 +35,6 @@ class Zone
      */
     private $parcel;
 
-
     /**
      * Get id
      *

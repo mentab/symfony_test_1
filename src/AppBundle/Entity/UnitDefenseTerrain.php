@@ -35,7 +35,6 @@ class UnitDefenseTerrain
      */
     private $terrain;
 
-
     /**
      * Get id
      *

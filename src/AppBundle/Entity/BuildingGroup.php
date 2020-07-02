@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BuildingGropu
  *
- * @ORM\Table(name="building_gropu")
+ * @ORM\Table(name="building_group")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BuildingGropuRepository")
  */
-class BuildingGropu
+class BuildingGroup
 {
     /**
      * @var int
@@ -34,7 +34,6 @@ class BuildingGropu
      * @ORM\Column(name="building", type="string", length=255)
      */
     private $building;
-
 
     /**
      * Get id

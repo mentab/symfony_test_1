@@ -42,7 +42,6 @@ class CaravanQueue
      */
     private $resource;
 
-
     /**
      * Get id
      *

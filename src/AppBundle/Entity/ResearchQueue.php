@@ -42,7 +42,6 @@ class ResearchQueue
      */
     private $time;
 
-
     /**
      * Get id
      *

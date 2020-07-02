@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\DescriptibleTextTrait;
+use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
  * GameObject
@@ -12,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class GameObject
 {
+	use DescriptibleTextTrait, DescriptibleImageTrait;
+
 	/**
 	 * @var int
 	 *

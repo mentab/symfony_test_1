@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\DescriptibleTextTrait;
+use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
  * Faction
@@ -12,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Faction
 {
+    use DescriptibleTextTrait, DescriptibleImageTrait;
+
     /**
      * @var int
      *
@@ -20,34 +24,6 @@ class Faction
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255)
-     */
-    private $image;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="icon", type="string", length=255)
-     */
-    private $icon;
 
     /**
      * @var string
@@ -77,7 +53,6 @@ class Faction
      */
     private $offset;
 
-
     /**
      * Get id
      *
@@ -86,102 +61,6 @@ class Faction
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Faction
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Faction
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Faction
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set icon
-     *
-     * @param string $icon
-     *
-     * @return Faction
-     */
-    public function setIcon($icon)
-    {
-        $this->icon = $icon;
-
-        return $this;
-    }
-
-    /**
-     * Get icon
-     *
-     * @return string
-     */
-    public function getIcon()
-    {
-        return $this->icon;
     }
 
     /**

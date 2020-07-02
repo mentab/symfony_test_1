@@ -21,7 +21,6 @@ class Map
      */
     private $id;
 
-
     /**
      * Get id
      *

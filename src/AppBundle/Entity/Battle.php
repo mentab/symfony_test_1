@@ -63,7 +63,6 @@ class Battle
      */
     private $time;
 
-
     /**
      * Get id
      *

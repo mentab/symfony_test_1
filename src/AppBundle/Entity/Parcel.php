@@ -28,7 +28,6 @@ class Parcel
      */
     private $city;
 
-
     /**
      * Get id
      *

@@ -42,7 +42,6 @@ class BuildingQueue
      */
     private $time;
 
-
     /**
      * Get id
      *

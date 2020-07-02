@@ -42,7 +42,6 @@ class UnitGroup
      */
     private $archived;
 
-
     /**
      * Get id
      *

@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Traits\DescriptibleTextTrait;
+use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
  * Server
@@ -12,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Server
 {
+    use DescriptibleTextTrait, DescriptibleImageTrait;
+
     /**
      * @var int
      *
@@ -20,20 +24,6 @@ class Server
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
 
     /**
      * @var string
@@ -63,7 +53,6 @@ class Server
      */
     private $offset;
 
-
     /**
      * Get id
      *
@@ -72,54 +61,6 @@ class Server
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Server
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Server
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
