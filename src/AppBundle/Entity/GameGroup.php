@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ResearchGroup
+ * Gamegroup
  *
- * @ORM\Table(name="research_group")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ResearchGroupRepository")
+ * @ORM\Table(name="game_group")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\GameGroupRepository")
  */
-class ResearchGroup
+class Gamegroup
 {
     /**
      * @var int
@@ -31,9 +31,9 @@ class ResearchGroup
     /**
      * @var string
      *
-     * @ORM\Column(name="research", type="string", length=255)
+     * @ORM\Column(name="resource", type="string", length=255)
      */
-    private $research;
+    private $resource;
 
     /**
      * Get id
@@ -50,7 +50,7 @@ class ResearchGroup
      *
      * @param string $level
      *
-     * @return ResearchGroup
+     * @return Gamegroup
      */
     public function setLevel($level)
     {
@@ -70,27 +70,27 @@ class ResearchGroup
     }
 
     /**
-     * Set research
+     * Set resource
      *
-     * @param string $research
+     * @param string $resource
      *
-     * @return ResearchGroup
+     * @return Gamegroup
      */
-    public function setResearch($research)
+    public function setResource($resource)
     {
-        $this->research = $research;
+        $this->resource = $resource;
 
         return $this;
     }
 
     /**
-     * Get research
+     * Get resource
      *
      * @return string
      */
-    public function getResearch()
+    public function getResource()
     {
-        return $this->research;
+        return $this->resource;
     }
 }
 

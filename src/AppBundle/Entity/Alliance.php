@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
@@ -25,17 +27,17 @@ class Alliance
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="creator", type="string", length=255)
+     /**
+     * @ORM\OneToOne(targetEntity="Player")
      */
     private $creator;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="member", type="string", length=255)
+   /**
+     * @ORM\ManyToMany(targetEntity="Player")
+     * @ORM\JoinTable(name="alliance_members",
+     *      joinColumns={@ORM\JoinColumn(name="alliance_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="player_id", referencedColumnName="id")}
+     *      )
      */
     private $member;
 
@@ -47,54 +49,6 @@ class Alliance
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Alliance
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Alliance
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
@@ -122,27 +76,43 @@ class Alliance
     }
 
     /**
-     * Set member
+     * Add member
      *
-     * @param string $member
-     *
-     * @return Alliance
+     * @param \AppBundle\Entity\Player $member
+     * @return City
      */
-    public function setMember($member)
+    public function addMember(\AppBundle\Entity\Player $member)
     {
-        $this->member = $member;
+        $this->members[] = $member;
 
         return $this;
     }
 
     /**
-     * Get member
+     * Remove member
      *
-     * @return string
+     * @param \AppBundle\Entity\Player $member
      */
-    public function getMember()
+    public function removeMember(\AppBundle\Entity\Player $member)
     {
-        return $this->member;
+        $this->members->removeElement($member);
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembers()
+    {
+        return $this->members;
+    }
+
+    /**
+     * Remove All pictures
+     */
+    public function removeAllMembers()
+    {
+        $this->members =   new ArrayCollection();
     }
 }
-

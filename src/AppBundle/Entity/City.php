@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
@@ -33,25 +35,13 @@ class City
     private $lastUpdate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="player", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="GameGroup")
+     * @ORM\JoinTable(name="city_game_groups",
+     *      joinColumns={@ORM\JoinColumn(name="city_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_group_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $player;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="resource", type="string", length=255)
-     */
-    private $resource;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="building", type="string", length=255)
-     */
-    private $building;
+    private $gameObjectGroups;
 
     /**
      * @var string
@@ -63,23 +53,9 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="garrison", type="string", length=255)
-     */
-    private $garrison;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="unit_queue", type="string", length=255)
      */
     private $unitQueue;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="research", type="string", length=255)
-     */
-    private $research;
 
     /**
      * @var string
@@ -155,54 +131,6 @@ class City
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return City
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return City
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
      * Set lastUpdate
      *
      * @param string $lastUpdate
@@ -224,6 +152,47 @@ class City
     public function getLastUpdate()
     {
         return $this->lastUpdate;
+    }
+
+    /**
+     * Add gameObjectGroup
+     *
+     * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
+     * @return City
+     */
+    public function addGameObjectGroup(\AppBundle\Entity\Gamegroup $gameObjectGroup)
+    {
+        $this->gameObjectGroups[] = $gameObjectGroup;
+
+        return $this;
+    }
+
+    /**
+     * Remove gameObjectGroup
+     *
+     * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
+     */
+    public function removeGameObjectGroup(\AppBundle\Entity\Gamegroup $gameObjectGroup)
+    {
+        $this->gameObjectGroups->removeElement($gameObjectGroup);
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGameObjectGroups()
+    {
+        return $this->gameObjectGroups;
+    }
+
+    /**
+     * Remove All pictures
+     */
+    public function removeAllGameObjectGroups()
+    {
+        $this->gameObjectGroups =   new ArrayCollection();
     }
 
     /**
@@ -251,54 +220,6 @@ class City
     }
 
     /**
-     * Set resource
-     *
-     * @param string $resource
-     *
-     * @return City
-     */
-    public function setResource($resource)
-    {
-        $this->resource = $resource;
-
-        return $this;
-    }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    public function getResource()
-    {
-        return $this->resource;
-    }
-
-    /**
-     * Set building
-     *
-     * @param string $building
-     *
-     * @return City
-     */
-    public function setBuilding($building)
-    {
-        $this->building = $building;
-
-        return $this;
-    }
-
-    /**
-     * Get building
-     *
-     * @return string
-     */
-    public function getBuilding()
-    {
-        return $this->building;
-    }
-
-    /**
      * Set buildingQueue
      *
      * @param string $buildingQueue
@@ -323,30 +244,6 @@ class City
     }
 
     /**
-     * Set garrison
-     *
-     * @param string $garrison
-     *
-     * @return City
-     */
-    public function setGarrison($garrison)
-    {
-        $this->garrison = $garrison;
-
-        return $this;
-    }
-
-    /**
-     * Get garrison
-     *
-     * @return string
-     */
-    public function getGarrison()
-    {
-        return $this->garrison;
-    }
-
-    /**
      * Set unitQueue
      *
      * @param string $unitQueue
@@ -368,30 +265,6 @@ class City
     public function getUnitQueue()
     {
         return $this->unitQueue;
-    }
-
-    /**
-     * Set research
-     *
-     * @param string $research
-     *
-     * @return City
-     */
-    public function setResearch($research)
-    {
-        $this->research = $research;
-
-        return $this;
-    }
-
-    /**
-     * Get research
-     *
-     * @return string
-     */
-    public function getResearch()
-    {
-        return $this->research;
     }
 
     /**

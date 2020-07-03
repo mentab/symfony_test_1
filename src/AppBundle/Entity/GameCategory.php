@@ -14,6 +14,8 @@ use AppBundle\Traits\DescriptibleImageTrait;
  */
 class GameCategory
 {
+	use DescriptibleTextTrait, DescriptibleImageTrait;
+
 	/**
 	 * @var int
 	 *
@@ -22,4 +24,45 @@ class GameCategory
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	private $id;
+
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="offset", type="string", length=255)
+     */
+    private $offset;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set offset
+     *
+     * @param string $offset
+     *
+     * @return GameCategory
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Get offset
+     *
+     * @return string
+     */
+    public function getOffset()
+    {
+        return $this->offset;
+    }
 }

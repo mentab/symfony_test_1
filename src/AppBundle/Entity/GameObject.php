@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
@@ -28,22 +29,20 @@ class GameObject
 	/**
      * @ORM\OneToOne(targetEntity="GameScore")
      */
-	private $gameScore;
+	private $score;
 
 	/**
      * @ORM\OneToOne(targetEntity="GameTime")
      */
-	private $gameTime;
+	private $time;
 
 	/**
      * @ORM\OneToOne(targetEntity="GameCost")
      */
-	private $gameCost;
+	private $cost;
 
-	 /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=255)
+	/**
+     * @ORM\OneToOne(targetEntity="GameCategory")
      */
     private $category;
 
@@ -69,11 +68,13 @@ class GameObject
     private $faction;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="game_requirement", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="GameRequirement")
+     * @ORM\JoinTable(name="game_object_requirements",
+     *      joinColumns={@ORM\JoinColumn(name="game_object_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_requirement_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $gameRequirement;
+    private $requirements;
 
     /**
      * @var string
@@ -93,15 +94,15 @@ class GameObject
 	}
 
 	/**
-     * Set gameScore
+     * Set score
      *
-     * @param string $gameScore
+     * @param string $score
      *
      * @return GameObject
      */
-    public function setGameScore($gameScore)
+    public function setScore($score)
     {
-        $this->gameScore = $gameScore;
+        $this->score = $score;
 
         return $this;
     }
@@ -111,57 +112,57 @@ class GameObject
      *
      * @return string
      */
-    public function getGameScore()
+    public function getScore()
     {
-        return $this->gameScore;
+        return $this->score;
     }
 
 	/**
-     * Set gameTime
+     * Set time
      *
-     * @param string $gameTime
+     * @param string $time
      *
-     * @return GameObject
+     * @return Object
      */
-    public function setGameTime($gameTime)
+    public function setTime($time)
     {
-        $this->gameTime = $gameTime;
+        $this->time = $time;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get time
      *
      * @return string
      */
-    public function getGameTime()
+    public function getTime()
     {
-        return $this->gameTime;
+        return $this->time;
     }
 
     /**
-     * Set gameCost
+     * Set cost
      *
-     * @param string $gameCost
+     * @param string $cost
      *
-     * @return GameObject
+     * @return Object
      */
-    public function setGameCost($gameCost)
+    public function setCost($cost)
     {
-        $this->gameCost = $gameCost;
+        $this->cost = $cost;
 
         return $this;
     }
 
     /**
-     * Get gameCost
+     * Get cost
      *
      * @return string
      */
-    public function getGameCost()
+    public function getCost()
     {
-        return $this->gameCost;
+        return $this->cost;
     }
 
     /**
@@ -261,27 +262,44 @@ class GameObject
     }
 
     /**
-     * Set gameRequirement
+     * Add requirement
      *
-     * @param string $gameRequirement
-     *
-     * @return GameObject
+     * @param \AppBundle\Entity\GameRequirement $requirement
+     * @return Offerchildpaint
      */
-    public function setGameRequirement($gameRequirement)
+    public function addRequirement(\AppBundle\Entity\GameRequirement $requirement)
     {
-        $this->gameRequirement = $gameRequirement;
+        $this->requirements[] = $requirement;
 
         return $this;
     }
 
     /**
-     * Get gameRequirement
+     * Remove requirement
      *
-     * @return string
+     * @param \AppBundle\Entity\GameRequirement $requirement
      */
-    public function getGameRequirement()
+    public function removePicture(\AppBundle\Entity\GameRequirement $requirement)
     {
-        return $this->gameRequirement;
+        $this->requirements->removeElement($requirement);
+    }
+
+    /**
+     * Get requirements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRequirements()
+    {
+        return $this->requirements;
+    }
+
+    /**
+     * Remove All requirements
+     */
+    public function removeAllRequirements()
+    {
+        $this->requirements =   new ArrayCollection();
     }
 
     /**
