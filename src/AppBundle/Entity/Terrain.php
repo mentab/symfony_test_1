@@ -25,6 +25,20 @@ class Terrain
      */
     private $id;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=255)
+     */
+    private $color;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="offset", type="string", length=255)
+     */
+    private $offset;
+
     /**
      * Get id
      *
@@ -33,5 +47,53 @@ class Terrain
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $zone
+     *
+     * @return Terrain
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * Set offset
+     *
+     * @param string $offset
+     *
+     * @return Terrain
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Get offset
+     *
+     * @return string
+     */
+    public function getOffset()
+    {
+        return $this->offset;
     }
 }

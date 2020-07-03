@@ -82,6 +82,69 @@ class City
     private $research;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="research_queue", type="string", length=255)
+     */
+    private $researchQueue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="troop_queue_from", type="string", length=255)
+     */
+    private $troopQueueFrom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="troop_queue_to", type="string", length=255)
+     */
+    private $troopQueueTo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="caravan_queue_from", type="string", length=255)
+     */
+    private $caravanQueueFrom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="caravan_queue_to", type="string", length=255)
+     */
+    private $caravanQueueTo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="trade_queue_from", type="string", length=255)
+     */
+    private $tradeQueuFrom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="trade_queue_to", type="string", length=255)
+     */
+    private $tradeQueueTo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="trade", type="string", length=255)
+     */
+    private $trade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="score", type="string", length=255)
+     */
+    private $score;
+
+    /**
      * Get id
      *
      * @return int
@@ -329,6 +392,222 @@ class City
     public function getResearch()
     {
         return $this->research;
+    }
+
+    /**
+     * Set researchQueue
+     *
+     * @param string $researchQueue
+     *
+     * @return City
+     */
+    public function setResearchQueue($researchQueue)
+    {
+        $this->researchQueue = $researchQueue;
+
+        return $this;
+    }
+
+    /**
+     * Get researchQueue
+     *
+     * @return string
+     */
+    public function getResearchQueue()
+    {
+        return $this->researchQueue;
+    }
+
+    /**
+     * Set troopQueueFrom
+     *
+     * @param string $troopQueueFrom
+     *
+     * @return City
+     */
+    public function setTroopQueueFrom($troopQueueFrom)
+    {
+        $this->troopQueueFrom = $troopQueueFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get troopQueueFrom
+     *
+     * @return string
+     */
+    public function getTroopQueueFrom()
+    {
+        return $this->troopQueueFrom;
+    }
+
+    /**
+     * Set troopQueueTo
+     *
+     * @param string $troopQueueTo
+     *
+     * @return City
+     */
+    public function setTroopQueueTo($troopQueueTo)
+    {
+        $this->troopQueueTo = $troopQueueTo;
+
+        return $this;
+    }
+
+    /**
+     * Get troopQueueTo
+     *
+     * @return string
+     */
+    public function getTroopQueueTo()
+    {
+        return $this->troopQueueTo;
+    }
+
+    /**
+     * Set caravanQueueFrom
+     *
+     * @param string $caravanQueueFrom
+     *
+     * @return City
+     */
+    public function setCaravanQueueFrom($caravanQueueFrom)
+    {
+        $this->caravanQueueFrom = $caravanQueueFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get caravanQueueFrom
+     *
+     * @return string
+     */
+    public function getCaravanQueueFrom()
+    {
+        return $this->caravanQueueFrom;
+    }
+
+    /**
+     * Set caravanQueueTo
+     *
+     * @param string $caravanQueueTo
+     *
+     * @return City
+     */
+    public function setcaravanQueueTo($caravanQueueTo)
+    {
+        $this->caravanQueueTo = $caravanQueueTo;
+
+        return $this;
+    }
+
+    /**
+     * Get caravanQueueTo
+     *
+     * @return string
+     */
+    public function getCaravanQueueTo()
+    {
+        return $this->caravanQueueTo;
+    }
+
+    /**
+     * Set tradeQueueFrom
+     *
+     * @param string $tradeQueueFrom
+     *
+     * @return City
+     */
+    public function setTradeQueueFrom($tradeQueueFrom)
+    {
+        $this->tradeQueueFrom = $tradeQueueFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get tradeQueueFrom
+     *
+     * @return string
+     */
+    public function getTradeQueueFrom()
+    {
+        return $this->tradeQueueFrom;
+    }
+
+    /**
+     * Set tradeQueueTo
+     *
+     * @param string $tradeQueueTo
+     *
+     * @return City
+     */
+    public function setTradeQueueTo($tradeQueueTo)
+    {
+        $this->tradeQueueTo = $tradeQueueTo;
+
+        return $this;
+    }
+
+    /**
+     * Get tradeQueueTo
+     *
+     * @return string
+     */
+    public function getTradeQueueTo()
+    {
+        return $this->tradeQueueTo;
+    }
+
+    /**
+     * Set trade
+     *
+     * @param string $trade
+     *
+     * @return City
+     */
+    public function setTrade($trade)
+    {
+        $this->trade = $trade;
+
+        return $this;
+    }
+
+    /**
+     * Get trade
+     *
+     * @return string
+     */
+    public function getTrade()
+    {
+        return $this->trade;
+    }
+
+    /**
+     * Set score
+     *
+     * @param string $score
+     *
+     * @return City
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return string
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 }
 
