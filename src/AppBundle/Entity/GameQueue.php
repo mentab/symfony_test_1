@@ -38,6 +38,20 @@ class GameQueue
     private $time;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="from", type="string", length=255)
+     */
+    private $from;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="to", type="string", length=255)
+     */
+    private $to;
+
+    /**
      * Get id
      *
      * @return int
@@ -110,6 +124,54 @@ class GameQueue
     public function getTime()
     {
         return $this->time;
+    }
+
+    /**
+     * Set time
+     *
+     * @param from $time
+     *
+     * @return GameQueue
+     */
+    public function setFrom($from)
+    {
+        $this->from = $from;
+
+        return $this;
+    }
+
+    /**
+     * Get from
+     *
+     * @return from
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * Set to
+     *
+     * @param string $to
+     *
+     * @return GameQueue
+     */
+    public function setTo($to)
+    {
+        $this->to = $to;
+
+        return $this;
+    }
+
+    /**
+     * Get ot
+     *
+     * @return string
+     */
+    public function getTo()
+    {
+        return $this->to;
     }
 }
 

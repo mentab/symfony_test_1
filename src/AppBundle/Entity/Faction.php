@@ -26,25 +26,13 @@ class Faction
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="unit_available", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="GameObject")
+     * @ORM\JoinTable(name="faction_game_objects",
+     *      joinColumns={@ORM\JoinColumn(name="faction_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $unitAvailable;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="research_available", type="string", length=255)
-     */
-    private $researchAvailable;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="building_available", type="string", length=255)
-     */
-    private $buildingAvailable;
+    private $gameObjects;
 
     /**
      * @var string
@@ -64,75 +52,44 @@ class Faction
     }
 
     /**
-     * Set unitAvailable
+     * Add gameObject
      *
-     * @param string $unitAvailable
-     *
+     * @param \AppBundle\Entity\Game $gameObject
      * @return Faction
      */
-    public function setUnitAvailable($unitAvailable)
+    public function addGameObject(\AppBundle\Entity\Game $gameObject)
     {
-        $this->unitAvailable = $unitAvailable;
+        $this->gameObjects[] = $gameObject;
 
         return $this;
     }
 
     /**
-     * Get unitAvailable
+     * Remove gameObject
      *
-     * @return string
+     * @param \AppBundle\Entity\Game $gameObject
      */
-    public function getUnitAvailable()
+    public function removeGameObject(\AppBundle\Entity\Game $gameObject)
     {
-        return $this->unitAvailable;
+        $this->gameObjects->removeElement($gameObject);
     }
 
     /**
-     * Set researchAvailable
+     * Get gameObjects
      *
-     * @param string $researchAvailable
-     *
-     * @return Faction
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setResearchAvailable($researchAvailable)
+    public function getGameObjects()
     {
-        $this->researchAvailable = $researchAvailable;
-
-        return $this;
+        return $this->gameObjects;
     }
 
     /**
-     * Get researchAvailable
-     *
-     * @return string
+     * Remove All gameObjects
      */
-    public function getResearchAvailable()
+    public function removeAllGameObjects()
     {
-        return $this->researchAvailable;
-    }
-
-    /**
-     * Set buildingAvailable
-     *
-     * @param string $buildingAvailable
-     *
-     * @return Faction
-     */
-    public function setBuildingAvailable($buildingAvailable)
-    {
-        $this->buildingAvailable = $buildingAvailable;
-
-        return $this;
-    }
-
-    /**
-     * Get buildingAvailable
-     *
-     * @return string
-     */
-    public function getBuildingAvailable()
-    {
-        return $this->buildingAvailable;
+        $this->gameObjects =   new ArrayCollection();
     }
 
     /**

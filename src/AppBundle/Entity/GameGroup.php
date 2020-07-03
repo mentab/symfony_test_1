@@ -22,18 +22,16 @@ class Gamegroup
     private $id;
 
     /**
+    * @ORM\OneToOne(targetEntity="GameObject")
+     */
+    private $gameObject;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="level", type="string", length=255)
      */
     private $level;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="resource", type="string", length=255)
-     */
-    private $resource;
 
     /**
      * Get id
@@ -43,6 +41,30 @@ class Gamegroup
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set gameObject
+     *
+     * @param string $gameObject
+     *
+     * @return Gamegroup
+     */
+    public function setGameObject($gameObject)
+    {
+        $this->gameObject = $gameObject;
+
+        return $this;
+    }
+
+    /**
+     * Get gameObject
+     *
+     * @return string
+     */
+    public function getGameObject()
+    {
+        return $this->gameObject;
     }
 
     /**
@@ -68,29 +90,4 @@ class Gamegroup
     {
         return $this->level;
     }
-
-    /**
-     * Set resource
-     *
-     * @param string $resource
-     *
-     * @return Gamegroup
-     */
-    public function setResource($resource)
-    {
-        $this->resource = $resource;
-
-        return $this;
-    }
-
-    /**
-     * Get resource
-     *
-     * @return string
-     */
-    public function getResource()
-    {
-        return $this->resource;
-    }
 }
-

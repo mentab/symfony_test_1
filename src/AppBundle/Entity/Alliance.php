@@ -14,7 +14,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * @ORM\Table(name="alliance")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AllianceRepository")
  */
-class Alliance
+class Alliance // TODO alliance module
 {
     use DescriptibleTextTrait, DescriptibleImageTrait;
 

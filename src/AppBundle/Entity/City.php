@@ -44,67 +44,13 @@ class City
     private $gameObjectGroups;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="building_queue", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="GameQueue")
+     * @ORM\JoinTable(name="city_game_queues",
+     *      joinColumns={@ORM\JoinColumn(name="city_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_queue_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $buildingQueue;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="unit_queue", type="string", length=255)
-     */
-    private $unitQueue;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="research_queue", type="string", length=255)
-     */
-    private $researchQueue;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="troop_queue_from", type="string", length=255)
-     */
-    private $troopQueueFrom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="troop_queue_to", type="string", length=255)
-     */
-    private $troopQueueTo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="caravan_queue_from", type="string", length=255)
-     */
-    private $caravanQueueFrom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="caravan_queue_to", type="string", length=255)
-     */
-    private $caravanQueueTo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="trade_queue_from", type="string", length=255)
-     */
-    private $tradeQueuFrom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="trade_queue_to", type="string", length=255)
-     */
-    private $tradeQueueTo;
+    private $gameObjectQueues;
 
     /**
      * @var string
@@ -157,10 +103,10 @@ class City
     /**
      * Add gameObjectGroup
      *
-     * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
+     * @param \AppBundle\Entity\GameGroup $gameObjectGroup
      * @return City
      */
-    public function addGameObjectGroup(\AppBundle\Entity\Gamegroup $gameObjectGroup)
+    public function addGameObjectGroup(\AppBundle\Entity\GameGroup $gameObjectGroup)
     {
         $this->gameObjectGroups[] = $gameObjectGroup;
 
@@ -172,13 +118,13 @@ class City
      *
      * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
      */
-    public function removeGameObjectGroup(\AppBundle\Entity\Gamegroup $gameObjectGroup)
+    public function removeGameObjectGroup(\AppBundle\Entity\GameGroup $gameObjectGroup)
     {
         $this->gameObjectGroups->removeElement($gameObjectGroup);
     }
 
     /**
-     * Get pictures
+     * Get gameObjectGroups
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -188,7 +134,7 @@ class City
     }
 
     /**
-     * Remove All pictures
+     * Remove All gameObjectGroups
      */
     public function removeAllGameObjectGroups()
     {
@@ -196,243 +142,44 @@ class City
     }
 
     /**
-     * Set player
+     * Add gameObjectQueue
      *
-     * @param string $player
-     *
+     * @param \AppBundle\Entity\GameQueue $gameObjectQueue
      * @return City
      */
-    public function setPlayer($player)
+    public function addGameObjectQueue(\AppBundle\Entity\GameQueue $gameObjectQueue)
     {
-        $this->player = $player;
+        $this->gameObjectQueues[] = $gameObjectQueue;
 
         return $this;
     }
 
     /**
-     * Get player
+     * Remove gameObjectQueue
      *
-     * @return string
+     * @param \AppBundle\Entity\GameQueue $gameObjectQueue
      */
-    public function getPlayer()
+    public function removeGameObjectQueue(\AppBundle\Entity\GameQueue $gameObjectQueue)
     {
-        return $this->player;
+        $this->gameObjectQueues->removeElement($gameObjectQueue);
     }
 
     /**
-     * Set buildingQueue
+     * Get gameObjectQueues
      *
-     * @param string $buildingQueue
-     *
-     * @return City
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function setBuildingQueue($buildingQueue)
+    public function getGameObjectQueues()
     {
-        $this->buildingQueue = $buildingQueue;
-
-        return $this;
+        return $this->gameObjectQueues;
     }
 
     /**
-     * Get buildingQueue
-     *
-     * @return string
+     * Remove All gameObjectQueues
      */
-    public function getBuildingQueue()
+    public function removeAllGameObjectQueues()
     {
-        return $this->buildingQueue;
-    }
-
-    /**
-     * Set unitQueue
-     *
-     * @param string $unitQueue
-     *
-     * @return City
-     */
-    public function setUnitQueue($unitQueue)
-    {
-        $this->unitQueue = $unitQueue;
-
-        return $this;
-    }
-
-    /**
-     * Get unitQueue
-     *
-     * @return string
-     */
-    public function getUnitQueue()
-    {
-        return $this->unitQueue;
-    }
-
-    /**
-     * Set researchQueue
-     *
-     * @param string $researchQueue
-     *
-     * @return City
-     */
-    public function setResearchQueue($researchQueue)
-    {
-        $this->researchQueue = $researchQueue;
-
-        return $this;
-    }
-
-    /**
-     * Get researchQueue
-     *
-     * @return string
-     */
-    public function getResearchQueue()
-    {
-        return $this->researchQueue;
-    }
-
-    /**
-     * Set troopQueueFrom
-     *
-     * @param string $troopQueueFrom
-     *
-     * @return City
-     */
-    public function setTroopQueueFrom($troopQueueFrom)
-    {
-        $this->troopQueueFrom = $troopQueueFrom;
-
-        return $this;
-    }
-
-    /**
-     * Get troopQueueFrom
-     *
-     * @return string
-     */
-    public function getTroopQueueFrom()
-    {
-        return $this->troopQueueFrom;
-    }
-
-    /**
-     * Set troopQueueTo
-     *
-     * @param string $troopQueueTo
-     *
-     * @return City
-     */
-    public function setTroopQueueTo($troopQueueTo)
-    {
-        $this->troopQueueTo = $troopQueueTo;
-
-        return $this;
-    }
-
-    /**
-     * Get troopQueueTo
-     *
-     * @return string
-     */
-    public function getTroopQueueTo()
-    {
-        return $this->troopQueueTo;
-    }
-
-    /**
-     * Set caravanQueueFrom
-     *
-     * @param string $caravanQueueFrom
-     *
-     * @return City
-     */
-    public function setCaravanQueueFrom($caravanQueueFrom)
-    {
-        $this->caravanQueueFrom = $caravanQueueFrom;
-
-        return $this;
-    }
-
-    /**
-     * Get caravanQueueFrom
-     *
-     * @return string
-     */
-    public function getCaravanQueueFrom()
-    {
-        return $this->caravanQueueFrom;
-    }
-
-    /**
-     * Set caravanQueueTo
-     *
-     * @param string $caravanQueueTo
-     *
-     * @return City
-     */
-    public function setcaravanQueueTo($caravanQueueTo)
-    {
-        $this->caravanQueueTo = $caravanQueueTo;
-
-        return $this;
-    }
-
-    /**
-     * Get caravanQueueTo
-     *
-     * @return string
-     */
-    public function getCaravanQueueTo()
-    {
-        return $this->caravanQueueTo;
-    }
-
-    /**
-     * Set tradeQueueFrom
-     *
-     * @param string $tradeQueueFrom
-     *
-     * @return City
-     */
-    public function setTradeQueueFrom($tradeQueueFrom)
-    {
-        $this->tradeQueueFrom = $tradeQueueFrom;
-
-        return $this;
-    }
-
-    /**
-     * Get tradeQueueFrom
-     *
-     * @return string
-     */
-    public function getTradeQueueFrom()
-    {
-        return $this->tradeQueueFrom;
-    }
-
-    /**
-     * Set tradeQueueTo
-     *
-     * @param string $tradeQueueTo
-     *
-     * @return City
-     */
-    public function setTradeQueueTo($tradeQueueTo)
-    {
-        $this->tradeQueueTo = $tradeQueueTo;
-
-        return $this;
-    }
-
-    /**
-     * Get tradeQueueTo
-     *
-     * @return string
-     */
-    public function getTradeQueueTo()
-    {
-        return $this->tradeQueueTo;
+        $this->gameObjectQueues =   new ArrayCollection();
     }
 
     /**
