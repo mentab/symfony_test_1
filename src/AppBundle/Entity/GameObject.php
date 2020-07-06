@@ -37,6 +37,11 @@ class GameObject
      */
 	private $time;
 
+    /**
+     * @ORM\OneToOne(targetEntity="GameObjectValue")
+     */
+    private $maintenance;
+
 	/**
      * @ORM\OneToOne(targetEntity="GameObjectValue")
      */
@@ -55,16 +60,16 @@ class GameObject
     /**
      * @var string
      *
-     * @ORM\Column(name="action", type="string", length=255, nullable=false)
+     * @ORM\Column(name="action", type="string", length=255)
      */
     private $action;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="behaviour", type="string", length=255)
      */
-    private $type;
+    private $behaviour;
 
     /**
      * @var string
@@ -155,6 +160,30 @@ class GameObject
     }
 
     /**
+     * Set maintenance
+     *
+     * @param string $maintenance
+     *
+     * @return GameObject
+     */
+    public function setMaintenance($maintenance)
+    {
+        $this->maintenance = $maintenance;
+
+        return $this;
+    }
+
+    /**
+     * Get maintenance
+     *
+     * @return string
+     */
+    public function getMaintenance()
+    {
+        return $this->maintenance;
+    }
+
+    /**
      * Set cost
      *
      * @param string $cost
@@ -227,53 +256,55 @@ class GameObject
     }
 
     /**
-     * @param string $type
+     * @param string $action
      *
-     * @return Message
+     * @return GameObject
      */
-     public function setGameObjectAction($gameOjectAction)
+     public function setAction($action)
      {
-         if (!in_array($type, MessageTypeEnum::getAvailableTypes())) {
+         if (!in_array($action, GameObjectActionEnum::getAvailableTypes())) {
              throw new \InvalidArgumentException("Invalid action");
          }
 
-         $this->gameOjectAction = $gameOjectAction;
+         $this->action = $action;
 
          return $this;
      }
 
     /**
-     * Get gameObjectAction
+     * Get action
      *
      * @return string
      */
-    public function getGameObjectAction()
+    public function getAction()
     {
-        return $this->gameObjectAction;
+        return $this->action;
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
+     * @param string $behaviour
      *
      * @return GameObject
      */
-    public function setType($type)
-    {
-        $this->type = $type;
+     public function setBehaviour($behaviour)
+     {
+         if (!in_array($action, GameObjectBehaviourEnum::getAvailableTypes())) {
+             throw new \InvalidArgumentException("Invalid behaviour");
+         }
 
-        return $this;
-    }
+         $this->behaviour = $behaviour;
+
+         return $this;
+     }
 
     /**
-     * Get type
+     * Get behaviour
      *
      * @return string
      */
-    public function getType()
+    public function getBehaviour()
     {
-        return $this->type;
+        return $this->behaviour;
     }
 
     /**

@@ -3,20 +3,21 @@
 namespace AppBundle\Enum;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Traits\DescriptibleTextTrait;
 
 /**
  * GameObjectActionEnum
  */
 class GameObjectActionEnum
 {
-	const ACTION_ATTACK = "atk";
-	const ACTION_DEFEND = "def";
+	const ACTION_ATK = "atk";
+    const ACTION_UPG = "upg";
+    const ACTION_INC = "inc";
 
-	/** @var array user friendly named type */
+	/** @var array user friendly named action */
     protected static $actionName = [
-        self::ACTION_ATTACK  => 'Attack',
-        self::ACTION_DEFEND => 'Defend'
+        self::ACTION_ATK  => 'Attack',
+        self::ACTION_UPG  => 'Upgrade',
+        self::ACTION_INC  => 'Increase'
     ];
 
     /**
@@ -26,7 +27,7 @@ class GameObjectActionEnum
     public static function getActionName($actionShortName)
     {
         if (!isset(static::$actionName[$actionShortName])) {
-            return "Unknown type ($typeShortName)";
+            return "Unknown action ($actionShortName)";
         }
 
         return static::$actionName[$actionShortName];
@@ -38,9 +39,9 @@ class GameObjectActionEnum
     public static function getAvailableActions()
     {
         return [
-            self::ACTION_ATTACK,
-            self::ACTION_DEFEND
+            self::ACTION_ATK,
+            self::ACTION_UPG,
+            self::ACTION_INC
         ];
     }
 }
-
