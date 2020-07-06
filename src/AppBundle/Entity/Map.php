@@ -22,11 +22,14 @@ class Map
     private $id;
 
     /**
-     * @var string
+     * @ORM\ManyToMany(targetEntity="Zone")
      *
-     * @ORM\Column(name="zone", type="string", length=255)
+     * @ORM\JoinTable(name="map_zones",
+     *      joinColumns={@ORM\JoinColumn(name="zone_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="map_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $zone;
+    private $zones;
 
     /**
      * Get id
@@ -39,27 +42,45 @@ class Map
     }
 
     /**
-     * Set zone
+     * Add zone
      *
-     * @param string $zone
+     * @param \AppBundle\Entity\Zone $zone
      *
-     * @return Research
+     * @return GameObject
      */
-    public function setZone($zone)
+    public function addZone(\AppBundle\Entity\Zone $zone)
     {
-        $this->zone = $zone;
+        $this->zones[] = $zone;
 
         return $this;
     }
 
     /**
-     * Get zone
+     * Remove zone
      *
-     * @return string
+     * @param \AppBundle\Entity\Zone $zone
      */
-    public function getZone()
+    public function removeZone(\AppBundle\Entity\Zone $zone)
     {
-        return $this->zone;
+        $this->zones->removeElement($zone);
+    }
+
+    /**
+     * Get zones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getZones()
+    {
+        return $this->zones;
+    }
+
+    /**
+     * Remove All zones
+     */
+    public function removeAllZones()
+    {
+        $this->zones =   new ArrayCollection();
     }
 }
 

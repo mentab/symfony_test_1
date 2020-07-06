@@ -12,7 +12,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * Alliance
  *
  * @ORM\Table(name="alliance")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AllianceRepository")
+ * @ORM\Entity
  */
 class Alliance // TODO alliance module
 {
@@ -79,7 +79,8 @@ class Alliance // TODO alliance module
      * Add member
      *
      * @param \AppBundle\Entity\Player $member
-     * @return City
+     *
+     * @return Alliance
      */
     public function addMember(\AppBundle\Entity\Player $member)
     {
@@ -99,7 +100,7 @@ class Alliance // TODO alliance module
     }
 
     /**
-     * Get pictures
+     * Get members
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -109,7 +110,7 @@ class Alliance // TODO alliance module
     }
 
     /**
-     * Remove All pictures
+     * Remove All members
      */
     public function removeAllMembers()
     {

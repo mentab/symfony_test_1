@@ -9,10 +9,10 @@ use AppBundle\Traits\DescriptibleImageTrait;
 /**
  * GameObject
  *
- * @ORM\Table(name="game_requirement")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameRequirementRepository")
+ * @ORM\Table(name="game_object_requirement")
+ * @ORM\Entity
  */
-class GameRequirement
+class GameObjectRequirement
 {
 	/**
 	 * @var int
@@ -52,7 +52,7 @@ class GameRequirement
      *
      * @param string $level
      *
-     * @return Research
+     * @return GameObjectRequirement
      */
     public function setLevel($level)
     {
@@ -76,7 +76,7 @@ class GameRequirement
      *
      * @param string $gameObject
      *
-     * @return Research
+     * @return GameObjectRequirement
      */
     public function setGameObject($gameObject)
     {

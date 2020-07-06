@@ -10,7 +10,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * Server
  *
  * @ORM\Table(name="server")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ServerRepository")
+ * @ORM\Entity
  */
 class Server
 {

@@ -9,7 +9,7 @@ use AppBundle\Traits\DescriptibleTextTrait;
  * AttackType
  *
  * @ORM\Table(name="attack_type")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AttackTypeRepository")
+ * @ORM\Entity
  */
 class AttackType
 {

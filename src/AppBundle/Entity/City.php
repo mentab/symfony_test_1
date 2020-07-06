@@ -12,7 +12,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * City
  *
  * @ORM\Table(name="city")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CityRepository")
+ * @ORM\Entity
  */
 class City
 {
@@ -35,19 +35,19 @@ class City
     private $lastUpdate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="GameGroup")
-     * @ORM\JoinTable(name="city_game_groups",
+     * @ORM\ManyToMany(targetEntity="GameObjectGroup")
+     * @ORM\JoinTable(name="city_game_object_groups",
      *      joinColumns={@ORM\JoinColumn(name="city_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="game_group_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_group_id", referencedColumnName="id", unique=true)}
      *      )
      */
     private $gameObjectGroups;
 
     /**
-     * @ORM\ManyToMany(targetEntity="GameQueue")
-     * @ORM\JoinTable(name="city_game_queues",
+     * @ORM\ManyToMany(targetEntity="GameObjectQueue")
+     * @ORM\JoinTable(name="city_game_object_queues",
      *      joinColumns={@ORM\JoinColumn(name="city_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="game_queue_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_queue_id", referencedColumnName="id", unique=true)}
      *      )
      */
     private $gameObjectQueues;
@@ -103,7 +103,7 @@ class City
     /**
      * Add gameObjectGroup
      *
-     * @param \AppBundle\Entity\GameGroup $gameObjectGroup
+     * @param \AppBundle\Entity\GameObjectGroup $gameObjectGroup
      * @return City
      */
     public function addGameObjectGroup(\AppBundle\Entity\GameGroup $gameObjectGroup)
@@ -116,7 +116,7 @@ class City
     /**
      * Remove gameObjectGroup
      *
-     * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
+     * @param \AppBundle\Entity\GameObjectGroup $gameObjectGroup
      */
     public function removeGameObjectGroup(\AppBundle\Entity\GameGroup $gameObjectGroup)
     {
@@ -144,7 +144,7 @@ class City
     /**
      * Add gameObjectQueue
      *
-     * @param \AppBundle\Entity\GameQueue $gameObjectQueue
+     * @param \AppBundle\Entity\GameObjectQueue $gameObjectQueue
      * @return City
      */
     public function addGameObjectQueue(\AppBundle\Entity\GameQueue $gameObjectQueue)
@@ -157,7 +157,7 @@ class City
     /**
      * Remove gameObjectQueue
      *
-     * @param \AppBundle\Entity\GameQueue $gameObjectQueue
+     * @param \AppBundle\Entity\GameObjectQueue $gameObjectQueue
      */
     public function removeGameObjectQueue(\AppBundle\Entity\GameQueue $gameObjectQueue)
     {

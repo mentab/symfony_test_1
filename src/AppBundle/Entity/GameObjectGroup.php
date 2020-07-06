@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Gamegroup
+ * GameObjectGroup
  *
- * @ORM\Table(name="game_group")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameGroupRepository")
+ * @ORM\Table(name="game_object_group")
+ * @ORM\Entity
  */
-class Gamegroup
+class GameObjectGroup
 {
     /**
      * @var int
@@ -48,7 +48,7 @@ class Gamegroup
      *
      * @param string $gameObject
      *
-     * @return Gamegroup
+     * @return GameObjectGroup
      */
     public function setGameObject($gameObject)
     {
@@ -72,7 +72,7 @@ class Gamegroup
      *
      * @param string $level
      *
-     * @return Gamegroup
+     * @return GameObjectGroup
      */
     public function setLevel($level)
     {

@@ -7,12 +7,12 @@ use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
- * GameObject
+ * GameObjectCategory
  *
- * @ORM\Table(name="game_score")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameScoreRepository")
+ * @ORM\Table(name="game_object_value")
+ * @ORM\Entity
  */
-class GameScore
+class GameObjectValue
 {
 	/**
 	 * @var int
@@ -26,16 +26,16 @@ class GameScore
 	/**
      * @var string
      *
-     * @ORM\Column(name="score", type="string", length=255)
+     * @ORM\Column(name="cost", type="string", length=255)
      */
-    private $score;
+    private $cost;
 
     /**
      * @var string
      *
      * @ORM\Column(name="multiplicator", type="string", length=255)
      */
-    private $multiplicator;
+    private $costMultiplicator;
 
     /**
 	 * Get id
@@ -47,28 +47,28 @@ class GameScore
 		return $this->id;
 	}
 
-    /**
-     * Set score
+     /**
+     * Set cost
      *
-     * @param string $score
+     * @param string $cost
      *
-     * @return Research
+     * @return GameObjectValue
      */
-    public function setScore($score)
+    public function setValue($value)
     {
-        $this->score = $score;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Get score
+     * Get cost
      *
      * @return string
      */
-    public function getScore()
+    public function getValue()
     {
-        return $this->score;
+        return $this->value;
     }
 
     /**
@@ -76,7 +76,7 @@ class GameScore
      *
      * @param string $multiplicator
      *
-     * @return Research
+     * @return GameObjectValue
      */
     public function setMultiplicator($multiplicator)
     {

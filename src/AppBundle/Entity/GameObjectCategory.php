@@ -7,12 +7,12 @@ use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
- * GameObject
+ * GameObjectCategory
  *
- * @ORM\Table(name="game_category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameCategoryRepository")
+ * @ORM\Table(name="game_object_category")
+ * @ORM\Entity
  */
-class GameCategory
+class GameObjectCategory
 {
 	use DescriptibleTextTrait, DescriptibleImageTrait;
 
@@ -47,7 +47,7 @@ class GameCategory
      *
      * @param string $offset
      *
-     * @return GameCategory
+     * @return GameObjectCategory
      */
     public function setOffset($offset)
     {

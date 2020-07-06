@@ -12,7 +12,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * GameObject
  *
  * @ORM\Table(name="game_object")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameRepository")
+ * @ORM\Entity
  */
 class GameObject
 {
@@ -28,24 +28,36 @@ class GameObject
 	private $id;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameScore")
+     * @ORM\OneToOne(targetEntity="GameObjectScore")
      */
 	private $score;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameTime")
+     * @ORM\OneToOne(targetEntity="GameObjectTime")
      */
 	private $time;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameCost")
+     * @ORM\OneToOne(targetEntity="GameObjectValue")
      */
 	private $cost;
 
+    /**
+     * @ORM\OneToOne(targetEntity="GameObjectValue")
+     */
+    private $prod;
+
 	/**
-     * @ORM\OneToOne(targetEntity="GameCategory")
+     * @ORM\OneToOne(targetEntity="GameObjectCategory")
      */
     private $category;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="action", type="string", length=255, nullable=false)
+     */
+    private $action;
 
     /**
      * @var string
@@ -69,10 +81,10 @@ class GameObject
     private $faction;
 
     /**
-     * @ORM\ManyToMany(targetEntity="GameRequirement")
+     * @ORM\ManyToMany(targetEntity="GameObjectRequirement")
      * @ORM\JoinTable(name="game_object_requirements",
      *      joinColumns={@ORM\JoinColumn(name="game_object_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="game_requirement_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_requirement_id", referencedColumnName="id", unique=true)}
      *      )
      */
     private $requirements;
@@ -109,7 +121,7 @@ class GameObject
     }
 
     /**
-     * Get category
+     * Get score
      *
      * @return string
      */
@@ -123,7 +135,7 @@ class GameObject
      *
      * @param string $time
      *
-     * @return Object
+     * @return GameObject
      */
     public function setTime($time)
     {
@@ -147,7 +159,7 @@ class GameObject
      *
      * @param string $cost
      *
-     * @return Object
+     * @return GameObject
      */
     public function setCost($cost)
     {
@@ -164,6 +176,30 @@ class GameObject
     public function getCost()
     {
         return $this->cost;
+    }
+
+    /**
+     * Set prod
+     *
+     * @param string $prod
+     *
+     * @return GameObject
+     */
+    public function setProd($prod)
+    {
+        $this->prod = $prod;
+
+        return $this;
+    }
+
+    /**
+     * Get cost
+     *
+     * @return string
+     */
+    public function getProd()
+    {
+        return $this->prod;
     }
 
     /**
@@ -188,6 +224,32 @@ class GameObject
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return Message
+     */
+     public function setGameObjectAction($gameOjectAction)
+     {
+         if (!in_array($type, MessageTypeEnum::getAvailableTypes())) {
+             throw new \InvalidArgumentException("Invalid action");
+         }
+
+         $this->gameOjectAction = $gameOjectAction;
+
+         return $this;
+     }
+
+    /**
+     * Get gameObjectAction
+     *
+     * @return string
+     */
+    public function getGameObjectAction()
+    {
+        return $this->gameObjectAction;
     }
 
     /**
@@ -266,7 +328,8 @@ class GameObject
      * Add requirement
      *
      * @param \AppBundle\Entity\GameRequirement $requirement
-     * @return Offerchildpaint
+     *
+     * @return GameObject
      */
     public function addRequirement(\AppBundle\Entity\GameRequirement $requirement)
     {
@@ -280,7 +343,7 @@ class GameObject
      *
      * @param \AppBundle\Entity\GameRequirement $requirement
      */
-    public function removePicture(\AppBundle\Entity\GameRequirement $requirement)
+    public function removeRequirement(\AppBundle\Entity\GameRequirement $requirement)
     {
         $this->requirements->removeElement($requirement);
     }

@@ -7,12 +7,12 @@ use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
- * GameObject
+ * GameObjectScore
  *
- * @ORM\Table(name="game_time")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameTimeRepository")
+ * @ORM\Table(name="game_object_score")
+ * @ORM\Entity
  */
-class GameTime
+class GameObjectScore
 {
 	/**
 	 * @var int
@@ -26,9 +26,9 @@ class GameTime
 	/**
      * @var string
      *
-     * @ORM\Column(name="time", type="string", length=255)
+     * @ORM\Column(name="score", type="string", length=255)
      */
-    private $time;
+    private $score;
 
     /**
      * @var string
@@ -48,27 +48,27 @@ class GameTime
 	}
 
     /**
-     * Set time
+     * Set score
      *
-     * @param string $time
+     * @param string $score
      *
-     * @return Research
+     * @return GameObjectScore
      */
-    public function setTime($time)
+    public function setScore($score)
     {
-        $this->time = $time;
+        $this->score = $score;
 
         return $this;
     }
 
     /**
-     * Get time
+     * Get score
      *
      * @return string
      */
-    public function getTime()
+    public function getScore()
     {
-        return $this->time;
+        return $this->score;
     }
 
     /**
@@ -76,7 +76,7 @@ class GameTime
      *
      * @param string $multiplicator
      *
-     * @return Research
+     * @return GameObjectScore
      */
     public function setMultiplicator($multiplicator)
     {

@@ -10,7 +10,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * Terrain
  *
  * @ORM\Table(name="terrain")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TerrainRepository")
+ * @ORM\Entity
  */
 class Terrain
 {

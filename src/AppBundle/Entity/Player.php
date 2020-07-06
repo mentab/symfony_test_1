@@ -10,7 +10,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * Player
  *
  * @ORM\Table(name="player")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PlayerRepository")
+ * @ORM\Entity
  */
 class Player
 {

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Zone
  *
  * @ORM\Table(name="zone")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ZoneRepository")
+ * @ORM\Entity
  */
 class Zone
 {
@@ -29,11 +29,14 @@ class Zone
     private $terrain;
 
     /**
-     * @var string
+     * @ORM\ManyToMany(targetEntity="Zone")
      *
-     * @ORM\Column(name="parcel", type="string", length=255)
+     * @ORM\JoinTable(name="zone_parcels",
+     *      joinColumns={@ORM\JoinColumn(name="parcel_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="zone_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $parcel;
+    private $parcels;
 
     /**
      * Get id
@@ -70,27 +73,45 @@ class Zone
     }
 
     /**
-     * Set parcel
+     * Add parcel
      *
-     * @param string $parcel
+     * @param \AppBundle\Entity\Parcel $parcel
      *
-     * @return Zone
+     * @return Parcel
      */
-    public function setParcel($parcel)
+    public function addParcel(\AppBundle\Entity\Parcel $parcel)
     {
-        $this->parcel = $parcel;
+        $this->parcels[] = $parcel;
 
         return $this;
     }
 
     /**
-     * Get parcel
+     * Remove parcel
      *
-     * @return string
+     * @param \AppBundle\Entity\Parcel $parcel
      */
-    public function getParcel()
+    public function removeParcel(\AppBundle\Entity\Parcel $parcel)
     {
-        return $this->parcel;
+        $this->parcels->removeElement($parcel);
+    }
+
+    /**
+     * Get parcels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParcels()
+    {
+        return $this->parcels;
+    }
+
+    /**
+     * Remove All parcels
+     */
+    public function removeAllParcels()
+    {
+        $this->parcels =   new ArrayCollection();
     }
 }
 

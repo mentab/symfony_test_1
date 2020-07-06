@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GameQueue
+ * GameObjectQueue
  *
- * @ORM\Table(name="game_queue")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameQueueRepository")
+ * @ORM\Table(name="game_object_queue")
+ * @ORM\Entity
  */
-class GameQueue
+class GameObjectQueue
 {
     /**
      * @var int
@@ -22,10 +22,10 @@ class GameQueue
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="GameGroup")
+     * @ORM\ManyToMany(targetEntity="GameObjectGroup")
      * @ORM\JoinTable(name="game_queue_groups",
-     *      joinColumns={@ORM\JoinColumn(name="game_queue_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="game_group_id", referencedColumnName="id", unique=true)}
+     *      joinColumns={@ORM\JoinColumn(name="game_oject_queue_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_group_id", referencedColumnName="id", unique=true)}
      *      )
      */
     private $gameObjectGroups;
@@ -64,10 +64,11 @@ class GameQueue
 	/**
      * Add gameObjectGroup
      *
-     * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
-     * @return City
+     * @param \AppBundle\Entity\GameObjectGroup $gameObjectGroup
+     *
+     * @return GameObjectQueue
      */
-    public function addGameObjectGroup(\AppBundle\Entity\Gamegroup $gameObjectGroup)
+    public function addGameObjectGroup(\AppBundle\Entity\GameObjectGroup $gameObjectGroup)
     {
         $this->gameObjectGroups[] = $gameObjectGroup;
 
@@ -77,15 +78,15 @@ class GameQueue
     /**
      * Remove gameObjectGroup
      *
-     * @param \AppBundle\Entity\Gamegroup $gameObjectGroup
+     * @param \AppBundle\Entity\GameObjectGroup $gameObjectGroup
      */
-    public function removeGameObjectGroup(\AppBundle\Entity\Gamegroup $gameObjectGroup)
+    public function removeGameObjectGroup(\AppBundle\Entity\GameObjectGroup $gameObjectGroup)
     {
         $this->gameObjectGroups->removeElement($gameObjectGroup);
     }
 
     /**
-     * Get pictures
+     * Get gameObjectGroups
      *
      * @return \Doctrine\Common\Collections\Collection
      */
@@ -95,7 +96,7 @@ class GameQueue
     }
 
     /**
-     * Remove All pictures
+     * Remove All gameObjectGroups
      */
     public function removeAllGameObjectGroups()
     {
@@ -107,7 +108,7 @@ class GameQueue
      *
      * @param string $time
      *
-     * @return GameQueue
+     * @return GameObjectQueue
      */
     public function setTime($time)
     {
@@ -131,7 +132,7 @@ class GameQueue
      *
      * @param from $time
      *
-     * @return GameQueue
+     * @return GameObjectQueue
      */
     public function setFrom($from)
     {
@@ -155,7 +156,7 @@ class GameQueue
      *
      * @param string $to
      *
-     * @return GameQueue
+     * @return GameObjectQueue
      */
     public function setTo($to)
     {

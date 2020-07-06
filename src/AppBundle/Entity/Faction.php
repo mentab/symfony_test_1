@@ -10,7 +10,7 @@ use AppBundle\Traits\DescriptibleImageTrait;
  * Faction
  *
  * @ORM\Table(name="faction")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FactionRepository")
+ * @ORM\Entity
  */
 class Faction
 {
@@ -54,10 +54,10 @@ class Faction
     /**
      * Add gameObject
      *
-     * @param \AppBundle\Entity\Game $gameObject
+     * @param \AppBundle\Entity\GameObject $gameObject
      * @return Faction
      */
-    public function addGameObject(\AppBundle\Entity\Game $gameObject)
+    public function addGameObject(\AppBundle\Entity\GameObject $gameObject)
     {
         $this->gameObjects[] = $gameObject;
 
@@ -67,9 +67,9 @@ class Faction
     /**
      * Remove gameObject
      *
-     * @param \AppBundle\Entity\Game $gameObject
+     * @param \AppBundle\Entity\GameObject $gameObject
      */
-    public function removeGameObject(\AppBundle\Entity\Game $gameObject)
+    public function removeGameObject(\AppBundle\Entity\GameObject $gameObject)
     {
         $this->gameObjects->removeElement($gameObject);
     }

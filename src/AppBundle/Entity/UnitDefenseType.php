@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * UnitDefenseType
  *
  * @ORM\Table(name="unit_defense_type")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UnitDefenseTypeRepository")
+ * @ORM\Entity
  */
 class UnitDefenseType
 {

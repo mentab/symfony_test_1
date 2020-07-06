@@ -7,12 +7,12 @@ use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
 /**
- * GameObject
+ * GameObjectTime
  *
- * @ORM\Table(name="game_cost")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\GameCostRepository")
+ * @ORM\Table(name="game_object_time")
+ * @ORM\Entity
  */
-class GameCost
+class GameObjectTime
 {
 	/**
 	 * @var int
@@ -26,16 +26,16 @@ class GameCost
 	/**
      * @var string
      *
-     * @ORM\Column(name="cost", type="string", length=255)
+     * @ORM\Column(name="time", type="string", length=255)
      */
-    private $cost;
+    private $time;
 
     /**
      * @var string
      *
      * @ORM\Column(name="multiplicator", type="string", length=255)
      */
-    private $costMultiplicator;
+    private $multiplicator;
 
     /**
 	 * Get id
@@ -47,28 +47,28 @@ class GameCost
 		return $this->id;
 	}
 
-     /**
-     * Set cost
+    /**
+     * Set time
      *
-     * @param string $cost
+     * @param string $time
      *
-     * @return Research
+     * @return GameObjectTime
      */
-    public function setCost($cost)
+    public function setTime($time)
     {
-        $this->cost = $cost;
+        $this->time = $time;
 
         return $this;
     }
 
     /**
-     * Get cost
+     * Get time
      *
      * @return string
      */
-    public function getCost()
+    public function getTime()
     {
-        return $this->cost;
+        return $this->time;
     }
 
     /**
@@ -76,7 +76,7 @@ class GameCost
      *
      * @param string $multiplicator
      *
-     * @return Research
+     * @return GameObjectTime
      */
     public function setMultiplicator($multiplicator)
     {
