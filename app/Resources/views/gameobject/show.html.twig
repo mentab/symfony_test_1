@@ -11,11 +11,11 @@
             </tr>
             <tr>
                 <th>Action</th>
-                <td>{{ gameObject.action }}</td>
+                <td>{% if gameObject.actions %}{{ gameObject.actions|join(', ') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Behaviour</th>
-                <td>{{ gameObject.behaviour }}</td>
+                <td>{% if gameObject.behaviours %}{{ gameObject.behaviours|join(', ') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Levelmax</th>

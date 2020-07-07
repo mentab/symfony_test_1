@@ -63,21 +63,21 @@ class GameObject
     /**
      * @var string
      *
-     * @ORM\Column(name="action", type="string", length=255)
+     * @ORM\Column(name="actions", type="array")
      */
-    private $action;
+    private $actions;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="behaviour", type="string", length=255)
+     * @ORM\Column(name="behaviours", type="array")
      */
-    private $behaviour;
+    private $behaviours;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="level_max", type="string", length=255)
+     * @ORM\Column(name="level_max", type="smallint")
      */
     private $levelMax;
 
@@ -259,109 +259,109 @@ class GameObject
     }
 
     /**
-     * @param string $action
+     * Add action
      *
      * @return GameObject
      */
-     public function setAction($action)
-     {
-         if (!in_array($action, GameObjectActionEnum::getAvailableActions())) {
+    public function addAction($action)
+    {
+        if (!in_array($action, GameObjectActionEnum::getAvailableActions())) {
              throw new \InvalidArgumentException("Invalid action");
          }
 
-         $this->action = $action;
+        if (is_array($this->actions) && is_string($action)) {
+            $this->actions = array_unique(array_merge(array($action), $this->actions));
+        }
 
-         return $this;
-     }
-
-    /**
-     * Get action
-     *
-     * @return string
-     */
-    public function getAction()
-    {
-        return $this->action;
+        return $this;
     }
 
-//    /**
-//     * Add Role
-//     *
-//     * @return Deal
-//     */
-//    public function addRole($role)
-//    {
-//        if (is_array($this->roles) && is_string($role))
-//        {
-//            $this->roles = array_unique(array_merge(array($role), $this->roles));
-//        }
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Set Roles
-//     *
-//     * @return Deal
-//     */
-//    public function setRoles($roles)
-//    {
-//        $this->roles = array_unique($roles);
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get Roles
-//     */
-//    public function getRoles()
-//    {
-//        if (is_array($this->roles))
-//        {
-//            return array_unique(array_merge(array('ROLE_USER'), $this->roles));
-//        }
-//
-//        return array('ROLE_USER');
-//    }
-//
-//    /**
-//     * Reset Roles
-//     */
-//    public function resetRoles()
-//    {
-//        $this->roles = array();
-//    }
-
     /**
-     * @param string $behaviour
+     * Set actions
      *
      * @return GameObject
      */
-     public function setBehaviour($behaviour)
-     {
-         if (!in_array($behaviour, GameObjectBehaviourEnum::getAvailableBehaviours())) {
+    public function setActions($actions)
+    {
+        $this->actions = array_unique($actions);
+
+        return $this;
+    }
+
+    /**
+     * Get actions
+     */
+    public function getActions()
+    {
+        if (is_array($this->actions)) {
+            return array_unique($this->actions);
+        }
+
+        return array();
+    }
+
+    /**
+     * Reset behaviours
+     */
+    public function resetActions()
+    {
+        $this->actions = array();
+    }
+
+    /**
+     * Add behaviour
+     *
+     * @return GameObject
+     */
+    public function addBehaviour($behaviour)
+    {
+        if (!in_array($behaviour, GameObjectBehaviourEnum::getAvailableBehaviours())) {
              throw new \InvalidArgumentException("Invalid behaviour");
          }
 
-         $this->behaviour = $behaviour;
+        if (is_array($this->behaviours) && is_string($behaviour)) {
+            $this->behaviours = array_unique(array_merge(array($behaviour), $this->behaviours));
+        }
 
-         return $this;
-     }
+        return $this;
+    }
 
     /**
-     * Get behaviour
+     * Set behaviours
      *
-     * @return string
+     * @return GameObject
      */
-    public function getBehaviour()
+    public function setBehaviours($behaviours)
     {
-        return $this->behaviour;
+        $this->behaviours = array_unique($behaviours);
+
+        return $this;
+    }
+
+    /**
+     * Get behaviours
+     */
+    public function getBehaviours()
+    {
+        if (is_array($this->behaviours)) {
+            return array_unique($this->behaviours);
+        }
+
+        return array();
+    }
+
+    /**
+     * Reset behaviours
+     */
+    public function resetBehaviours()
+    {
+        $this->behaviours = array();
     }
 
     /**
      * Set levelMax
      *
-     * @param string $levelMax
+     * @param integer $levelMax
      *
      * @return GameObject
      */
@@ -375,7 +375,7 @@ class GameObject
     /**
      * Get levelMax
      *
-     * @return string
+     * @return integer
      */
     public function getLevelMax()
     {

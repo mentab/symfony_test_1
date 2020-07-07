@@ -7,8 +7,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Action</th>
-                <th>Behaviour</th>
+                <th>Actions</th>
+                <th>Behaviours</th>
                 <th>Levelmax</th>
                 <th>Faction</th>
                 <th>Offset</th>
@@ -23,8 +23,8 @@
         {% for gameObject in gameObjects %}
             <tr>
                 <td><a href="{{ path('gameobject_show', { 'id': gameObject.id }) }}">{{ gameObject.id }}</a></td>
-                <td>{{ gameObject.action }}</td>
-                <td>{{ gameObject.behaviour }}</td>
+                <td>{% if gameObject.actions %}{{ gameObject.actions|join(', ') }}{% endif %}</td>
+                <td>{% if gameObject.behaviours %}{{ gameObject.behaviours|join(', ') }}{% endif %}</td>
                 <td>{{ gameObject.levelMax }}</td>
                 <td>{{ gameObject.faction }}</td>
                 <td>{{ gameObject.offset }}</td>
