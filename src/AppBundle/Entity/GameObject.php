@@ -8,6 +8,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Traits\DescriptibleTextTrait;
 use AppBundle\Traits\DescriptibleImageTrait;
 
+use AppBundle\Enum\GameObjectActionEnum;
+use AppBundle\Enum\GameObjectBehaviourEnum;
+
 /**
  * GameObject
  *
@@ -262,7 +265,7 @@ class GameObject
      */
      public function setAction($action)
      {
-         if (!in_array($action, GameObjectActionEnum::getAvailableTypes())) {
+         if (!in_array($action, GameObjectActionEnum::getAvailableActions())) {
              throw new \InvalidArgumentException("Invalid action");
          }
 
@@ -281,6 +284,54 @@ class GameObject
         return $this->action;
     }
 
+//    /**
+//     * Add Role
+//     *
+//     * @return Deal
+//     */
+//    public function addRole($role)
+//    {
+//        if (is_array($this->roles) && is_string($role))
+//        {
+//            $this->roles = array_unique(array_merge(array($role), $this->roles));
+//        }
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Set Roles
+//     *
+//     * @return Deal
+//     */
+//    public function setRoles($roles)
+//    {
+//        $this->roles = array_unique($roles);
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get Roles
+//     */
+//    public function getRoles()
+//    {
+//        if (is_array($this->roles))
+//        {
+//            return array_unique(array_merge(array('ROLE_USER'), $this->roles));
+//        }
+//
+//        return array('ROLE_USER');
+//    }
+//
+//    /**
+//     * Reset Roles
+//     */
+//    public function resetRoles()
+//    {
+//        $this->roles = array();
+//    }
+
     /**
      * @param string $behaviour
      *
@@ -288,7 +339,7 @@ class GameObject
      */
      public function setBehaviour($behaviour)
      {
-         if (!in_array($action, GameObjectBehaviourEnum::getAvailableTypes())) {
+         if (!in_array($behaviour, GameObjectBehaviourEnum::getAvailableBehaviours())) {
              throw new \InvalidArgumentException("Invalid behaviour");
          }
 
