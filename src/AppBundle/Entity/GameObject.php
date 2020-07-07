@@ -82,9 +82,7 @@ class GameObject
     private $levelMax;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="faction", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="Faction")
      */
     private $faction;
 
