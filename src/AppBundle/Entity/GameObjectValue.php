@@ -26,16 +26,16 @@ class GameObjectValue
 	/**
      * @var string
      *
-     * @ORM\Column(name="cost", type="string", length=255)
+     * @ORM\Column(name="value", type="string", length=255)
      */
-    private $cost;
+    private $value;
 
     /**
      * @var string
      *
      * @ORM\Column(name="multiplicator", type="string", length=255)
      */
-    private $costMultiplicator;
+    private $multiplicator;
 
     /**
 	 * Get id
@@ -48,9 +48,9 @@ class GameObjectValue
 	}
 
      /**
-     * Set cost
+     * Set value
      *
-     * @param string $cost
+     * @param string $value
      *
      * @return GameObjectValue
      */
@@ -62,7 +62,7 @@ class GameObjectValue
     }
 
     /**
-     * Get cost
+     * Get value
      *
      * @return string
      */

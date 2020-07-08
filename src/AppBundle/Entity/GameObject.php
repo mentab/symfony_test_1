@@ -31,32 +31,32 @@ class GameObject
 	private $id;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameObjectScore")
+     * @ORM\OneToOne(targetEntity="GameObjectScore", cascade={"persist"})
      */
 	private $score;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameObjectTime")
+     * @ORM\OneToOne(targetEntity="GameObjectTime", cascade={"persist"})
      */
 	private $time;
 
     /**
-     * @ORM\OneToOne(targetEntity="GameObjectValue")
+     * @ORM\OneToOne(targetEntity="GameObjectValue", cascade={"persist"})
      */
     private $maintenance;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameObjectValue")
+     * @ORM\OneToOne(targetEntity="GameObjectValue", cascade={"persist"})
      */
 	private $cost;
 
     /**
-     * @ORM\OneToOne(targetEntity="GameObjectValue")
+     * @ORM\OneToOne(targetEntity="GameObjectValue", cascade={"persist"})
      */
     private $prod;
 
 	/**
-     * @ORM\OneToOne(targetEntity="GameObjectCategory")
+     * @ORM\ManyToOne(targetEntity="GameObjectCategory", cascade={"persist"})
      */
     private $category;
 
@@ -82,7 +82,7 @@ class GameObject
     private $levelMax;
 
     /**
-     * @ORM\OneToOne(targetEntity="Faction")
+     * @ORM\ManyToOne(targetEntity="Faction", cascade={"persist"})
      */
     private $faction;
 

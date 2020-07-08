@@ -14,6 +14,9 @@ use AppBundle\Enum\GameObjectBehaviourEnum;
 use AppBundle\Enum\GameObjectActionEnum;
 
 use AppBundle\Form\GameObjectCategoryType;
+use AppBundle\Form\GameObjectScoreType;
+use AppBundle\Form\GameObjectTimeType;
+use AppBundle\Form\GameObjectValueType;
 
 class GameObjectType extends AbstractType
 {
@@ -51,8 +54,12 @@ class GameObjectType extends AbstractType
             ->add('description')
             ->add('icon', FileType::class)
             ->add('image', FileType::class)
-
-            // ->add('category', GameObjectCategoryType::class)
+            ->add('category', GameObjectCategoryType::class)
+            ->add('score', GameObjectScoreType::class)
+            ->add('time', GameObjectTimeType::class)
+            ->add('maintenance', GameObjectValueType::class)
+            ->add('cost', GameObjectValueType::class)
+            ->add('prod', GameObjectValueType::class)
 
             /*->add('score', EntityType::class, array(
                 'class' => 'AppBundle:gameObjectScore',
@@ -98,8 +105,7 @@ class GameObjectType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'property_path' => 'prod',
-            ))*/
-
+            ))
             ->add('category', EntityType::class, array(
                 'class' => 'AppBundle:gameObjectCategory',
                 'choice_label' => 'name',
@@ -122,7 +128,7 @@ class GameObjectType extends AbstractType
                         'property_path' => 'category'
                     ));
                 }
-            })
+            })*/
             ->add('requirements');
     }/**
      * {@inheritdoc}
