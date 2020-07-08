@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
+use Symfony\Component\Validator\Constraints\File;
+
 class GameObjectCategoryType extends AbstractType
 {
     /**
@@ -17,8 +21,38 @@ class GameObjectCategoryType extends AbstractType
             ->add('offset')
             ->add('name')
             ->add('description')
-            ->add('icon')
-            ->add('image');
+            ->add('icon', FileType::class, array(
+                'label' => 'icon (PNG file)',
+                'data_class' => null,
+                'mapped' => false,
+                'required' => false,
+                 'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG document',
+                    ])
+                ],
+            ))
+            ->add('image', FileType::class, array(
+                'label' => 'icon (PNG file)',
+                'data_class' => null,
+                'mapped' => false,
+                'required' => false,
+                 'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG document',
+                    ])
+                ],
+            ));
     }
 
     /**

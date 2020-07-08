@@ -10,6 +10,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
+use Symfony\Component\Validator\Constraints\File;
+
 use AppBundle\Enum\GameObjectBehaviourEnum;
 use AppBundle\Enum\GameObjectActionEnum;
 
@@ -52,8 +54,38 @@ class GameObjectType extends AbstractType
             ->add('offset')
             ->add('name')
             ->add('description')
-            ->add('icon', FileType::class)
-            ->add('image', FileType::class)
+            ->add('icon', FileType::class, array(
+                'label' => 'icon (PNG file)',
+                'data_class' => null,
+                'mapped' => false,
+                'required' => false,
+                 'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG document',
+                    ])
+                ],
+            ))
+            ->add('image', FileType::class, array(
+                'label' => 'image (PNG file)',
+                'data_class' => null,
+                'mapped' => false,
+                'required' => false,
+                 'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid JPEG or PNG document',
+                    ])
+                ],
+            ))
             ->add('category', GameObjectCategoryType::class)
             ->add('score', GameObjectScoreType::class)
             ->add('time', GameObjectTimeType::class)

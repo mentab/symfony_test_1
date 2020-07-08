@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\GameObject;
+use AppBundle\Service\FileUploader;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -37,13 +39,19 @@ class GameObjectController extends Controller
      * @Route("/new", name="gameobject_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, FileUploader $fileUploader)
     {
         $gameObject = new Gameobject();
         $form = $this->createForm('AppBundle\Form\GameObjectType', $gameObject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $gameObject->setImageFilename($imageFileName);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($gameObject);
             $em->flush();

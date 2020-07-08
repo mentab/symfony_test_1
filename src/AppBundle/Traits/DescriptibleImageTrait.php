@@ -9,47 +9,47 @@ trait DescriptibleImageTrait
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="icon", type="string", length=255)
+	 * @ORM\Column(name="icon_filename", type="string", length=255)
 	 */
-	private $icon;
+	private $iconFilename;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="image", type="string", length=255)
+	 * @ORM\Column(name="image_filename", type="string", length=255)
 	 */
-	private $image;
+	private $imageFilename;
 
 	/**
-	 * Set icon
+	 * Set iconFilename
 	 *
-	 * @param string $icon
+	 * @param string $iconFilename
 	 */
-	public function setIcon($icon)
+	public function setIconFilename($iconFilename)
 	{
-		$this->icon = $icon;
+		$this->iconFilename = $iconFilename;
 
 		return $this;
 	}
 
 	/**
-	 * Get icon
+	 * Get iconFilename
 	 *
 	 * @return string
 	 */
-	public function getIcon()
+	public function getIconFilename()
 	{
-		return $this->icon;
+		return $this->iconFilename;
 	}
 
 	/**
-	 * Set image
+	 * Set imageFilename
 	 *
-	 * @param string $image
+	 * @param string $imageFilename
 	 */
-	public function setImage($image)
+	public function setImageFilename($imageFilename)
 	{
-		$this->image = $image;
+		$this->imageFilename = $imageFilename;
 
 		return $this;
 	}
@@ -59,8 +59,8 @@ trait DescriptibleImageTrait
 	 *
 	 * @return string
 	 */
-	public function getImage()
+	public function getImageFilename()
 	{
-		return $this->image;
+		return $this->imageFilename;
 	}
 }
