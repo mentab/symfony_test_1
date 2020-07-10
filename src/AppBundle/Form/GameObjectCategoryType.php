@@ -18,9 +18,9 @@ class GameObjectCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('offset')
             ->add('name')
             ->add('description')
+            ->add('offset')
             ->add('icon', FileType::class, array(
                 'label' => 'icon (PNG file)',
                 'data_class' => null,

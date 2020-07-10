@@ -29,7 +29,7 @@ class Zone
     private $terrain;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Zone")
+     * @ORM\ManyToMany(targetEntity="Parcel")
      *
      * @ORM\JoinTable(name="zone_parcels",
      *      joinColumns={@ORM\JoinColumn(name="parcel_id", referencedColumnName="id")},

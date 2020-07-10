@@ -23,19 +23,10 @@
                         <li>
                             <a href="{{ path('gameobjectscore_show', { 'id': gameObjectScore.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('gameobjectscore_edit', { 'id': gameObjectScore.id }) }}">edit</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('gameobjectscore_new') }}">Create a new gameObjectScore</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -51,7 +51,11 @@ class GameObjectController extends Controller
                 $imageFileName = $fileUploader->upload($imageFile);
                 $gameObject->setImageFilename($imageFileName);
             }
-
+            $imageFile = $form->get('icon')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $gameObject->setIconFilename($imageFileName);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($gameObject);
             $em->flush();

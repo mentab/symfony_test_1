@@ -23,19 +23,10 @@
                         <li>
                             <a href="{{ path('gameobjecttime_show', { 'id': gameObjectTime.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('gameobjecttime_edit', { 'id': gameObjectTime.id }) }}">edit</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('gameobjecttime_new') }}">Create a new gameObjectTime</a>
-        </li>
-    </ul>
 {% endblock %}
