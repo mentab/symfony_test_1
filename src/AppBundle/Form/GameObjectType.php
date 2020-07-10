@@ -86,81 +86,15 @@ class GameObjectType extends AbstractType
                     ])
                 ],
             ))
-            ->add('category', GameObjectCategoryType::class)
+            ->add('category', EntityType::class, array(
+                'class' => 'AppBundle:gameObjectCategory',
+                'choice_label' => 'name',
+            ))
             ->add('score', GameObjectScoreType::class)
             ->add('time', GameObjectTimeType::class)
             ->add('maintenance', GameObjectValueType::class)
             ->add('cost', GameObjectValueType::class)
             ->add('prod', GameObjectValueType::class)
-
-            /*->add('score', EntityType::class, array(
-                'class' => 'AppBundle:gameObjectScore',
-                'choice_label' => 'name',
-            ))
-            ->add('scoreNew', new EmbedItemForm(), array(
-                'required' => false,
-                'mapped' => false,
-                'property_path' => 'score',
-            ))
-            ->add('time', EntityType::class, array(
-                'class' => 'AppBundle:gameObjectTime',
-                'choice_label' => 'name',
-            ))
-            ->add('timeNew', new EmbedItemForm(), array(
-                'required' => false,
-                'mapped' => false,
-                'property_path' => 'time',
-            ))
-            ->add('maintenance', EntityType::class, array(
-                'class' => 'AppBundle:gameObjectValue',
-                'choice_label' => 'name',
-            ))
-            ->add('maintenanceNew', new EmbedItemForm(), array(
-                'required' => false,
-                'mapped' => false,
-                'property_path' => 'maintenance',
-            ))
-            ->add('cost', EntityType::class, array(
-                'class' => 'AppBundle:gameObjectValue',
-                'choice_label' => 'name',
-            ))
-            ->add('costNew', new EmbedItemForm(), array(
-                'required' => false,
-                'mapped' => false,
-                'property_path' => 'cost',
-            ))
-            ->add('prod', EntityType::class, array(
-                'class' => 'AppBundle:gameObjectValue',
-                'choice_label' => 'name',
-            ))
-            ->add('prodNew', new EmbedItemForm(), array(
-                'required' => false,
-                'mapped' => false,
-                'property_path' => 'prod',
-            ))
-            ->add('category', EntityType::class, array(
-                'class' => 'AppBundle:gameObjectCategory',
-                'choice_label' => 'name',
-            ))
-            ->add('categoryNew', new EmbedItemForm(), array(
-                'required' => false,
-                'mapped' => false,
-                'property_path' => 'category',
-            ))
-            ->addEventListener(FormEvents::PRE_SUBMIT, function(FormEvent $event) {
-                $data = $event->getData();
-                $form = $event->getForm();
-
-                if (!empty($data['categoryNew']['name'])) {
-                    $form->remove('category');
-
-                    $form->add('categoryNew', new EmbedItemForm(), array(
-                        'required' => true,
-                        'mapped' => true,
-                        'property_path' => 'category'
-                    ));
-                }
-            })*/
             ->add('requirements');
     }/**
      * {@inheritdoc}

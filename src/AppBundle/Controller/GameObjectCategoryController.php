@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Gameobjectcategory controller.
  *
- * @Route("Gameobjectcategory")
+ * @Route("gameobjectcategory")
  */
 class GameObjectCategoryController extends Controller
 {
