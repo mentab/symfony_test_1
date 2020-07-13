@@ -26,9 +26,9 @@ class GameObjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $gameObjects = $em->getRepository('Admin\AdminBundle:GameObject')->findAll();
+        $gameObjects = $em->getRepository('AdminAdminBundle:GameObject')->findAll();
 
-        return $this->render('Gameobject/index.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobject/index.html.twig', array(
             'gameObjects' => $gameObjects,
         ));
     }
@@ -42,7 +42,7 @@ class GameObjectController extends Controller
     public function newAction(Request $request, FileUploader $fileUploader)
     {
         $gameObject = new Gameobject();
-        $form = $this->createForm('Admin\AdminBundle\Form\GameObjectType', $gameObject);
+        $form = $this->createForm('AdminAdminBundle\Form\GameObjectType', $gameObject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class GameObjectController extends Controller
             return $this->redirectToRoute('gameobject_show', array('id' => $gameObject->getId()));
         }
 
-        return $this->render('Gameobject/new.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobject/new.html.twig', array(
             'gameObject' => $gameObject,
             'form' => $form->createView(),
         ));
@@ -79,7 +79,7 @@ class GameObjectController extends Controller
     {
         $deleteForm = $this->createDeleteForm($gameObject);
 
-        return $this->render('Gameobject/show.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobject/show.html.twig', array(
             'gameObject' => $gameObject,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -103,7 +103,7 @@ class GameObjectController extends Controller
             return $this->redirectToRoute('gameobject_edit', array('id' => $gameObject->getId()));
         }
 
-        return $this->render('Gameobject/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobject/edit.html.twig', array(
             'gameObject' => $gameObject,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

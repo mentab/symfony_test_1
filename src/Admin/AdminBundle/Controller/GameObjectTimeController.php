@@ -24,9 +24,9 @@ class GameObjectTimeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $gameObjectTimes = $em->getRepository('Admin\AdminBundle:GameObjectTime')->findAll();
+        $gameObjectTimes = $em->getRepository('AdminAdminBundle:GameObjectTime')->findAll();
 
-        return $this->render('Gameobjecttime/index.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjecttime/index.html.twig', array(
             'gameObjectTimes' => $gameObjectTimes,
         ));
     }
@@ -39,7 +39,7 @@ class GameObjectTimeController extends Controller
      */
     public function showAction(GameObjectTime $gameObjectTime)
     {
-        return $this->render('Gameobjecttime/show.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjecttime/show.html.twig', array(
             'gameObjectTime' => $gameObjectTime,
         ));
     }

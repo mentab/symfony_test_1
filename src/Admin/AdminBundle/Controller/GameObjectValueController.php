@@ -24,9 +24,9 @@ class GameObjectValueController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $gameObjectValues = $em->getRepository('Admin\AdminBundle:GameObjectValue')->findAll();
+        $gameObjectValues = $em->getRepository('AdminAdminBundle:GameObjectValue')->findAll();
 
-        return $this->render('Gameobjectvalue/index.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectvalue/index.html.twig', array(
             'gameObjectValues' => $gameObjectValues,
         ));
     }
@@ -39,7 +39,7 @@ class GameObjectValueController extends Controller
      */
     public function showAction(GameObjectValue $gameObjectValue)
     {
-        return $this->render('Gameobjectvalue/show.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectvalue/show.html.twig', array(
             'gameObjectValue' => $gameObjectValue,
         ));
     }

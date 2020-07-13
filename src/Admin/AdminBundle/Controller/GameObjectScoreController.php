@@ -24,9 +24,9 @@ class GameObjectScoreController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $gameObjectScores = $em->getRepository('Admin\AdminBundle:GameObjectScore')->findAll();
+        $gameObjectScores = $em->getRepository('AdminAdminBundle:GameObjectScore')->findAll();
 
-        return $this->render('Gameobjectscore/index.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectscore/index.html.twig', array(
             'gameObjectScores' => $gameObjectScores,
         ));
     }
@@ -39,7 +39,7 @@ class GameObjectScoreController extends Controller
      */
     public function showAction(GameObjectScore $gameObjectScore)
     {
-        return $this->render('Gameobjectscore/show.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectscore/show.html.twig', array(
             'gameObjectScore' => $gameObjectScore,
         ));
     }

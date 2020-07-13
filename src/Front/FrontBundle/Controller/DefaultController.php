@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FrontFrontBundle:Default:index.html.twig');
+        return $this->render('@FrontFront/Default/index.html.twig');
     }
 }

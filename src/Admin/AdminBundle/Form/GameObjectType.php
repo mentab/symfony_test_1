@@ -48,7 +48,7 @@ class GameObjectType extends AbstractType
                 ))
             ->add('levelMax')
             ->add('faction', EntityType::class, array(
-                'class' => 'Admin\AdminBundle:faction',
+                'class' => 'AdminAdminBundle:faction',
                 'choice_label' => 'name',
             ))
             ->add('offset')
@@ -87,7 +87,7 @@ class GameObjectType extends AbstractType
                 ],
             ))
             ->add('category', EntityType::class, array(
-                'class' => 'Admin\AdminBundle:gameObjectCategory',
+                'class' => 'AdminAdminBundle:gameObjectCategory',
                 'choice_label' => 'name',
             ))
             ->add('score', GameObjectScoreType::class)
@@ -111,6 +111,6 @@ class GameObjectType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'Admin\AdminBundle_gameobject';
+        return 'AdminAdminBundle_gameobject';
     }
 }

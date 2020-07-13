@@ -26,9 +26,9 @@ class GameObjectCategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $gameObjectCategories = $em->getRepository('Admin\AdminBundle:GameObjectCategory')->findAll();
+        $gameObjectCategories = $em->getRepository('AdminAdminBundle:GameObjectCategory')->findAll();
 
-        return $this->render('Gameobjectcategory/index.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectcategory/index.html.twig', array(
             'gameObjectCategories' => $gameObjectCategories,
         ));
     }
@@ -63,7 +63,7 @@ class GameObjectCategoryController extends Controller
             return $this->redirectToRoute('gameobjectcategory_show', array('id' => $gameObjectCategory->getId()));
         }
 
-        return $this->render('Gameobjectcategory/new.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectcategory/new.html.twig', array(
             'gameObjectCategory' => $gameObjectCategory,
             'form' => $form->createView(),
         ));
@@ -79,7 +79,7 @@ class GameObjectCategoryController extends Controller
     {
         $deleteForm = $this->createDeleteForm($gameObjectCategory);
 
-        return $this->render('Gameobjectcategory/show.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectcategory/show.html.twig', array(
             'gameObjectCategory' => $gameObjectCategory,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -103,7 +103,7 @@ class GameObjectCategoryController extends Controller
             return $this->redirectToRoute('gameobjectcategory_edit', array('id' => $gameObjectCategory->getId()));
         }
 
-        return $this->render('Gameobjectcategory/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Gameobjectcategory/edit.html.twig', array(
             'gameObjectCategory' => $gameObjectCategory,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
