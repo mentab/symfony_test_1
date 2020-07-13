@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gameobjectscores list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Score</th>
+                <th>Multiplicator</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gameObjectScore in gameObjectScores %}
+            <tr>
+                <td><a href="{{ path('gameobjectscore_show', { 'id': gameObjectScore.id }) }}">{{ gameObjectScore.id }}</a></td>
+                <td>{{ gameObjectScore.score }}</td>
+                <td>{{ gameObjectScore.multiplicator }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gameobjectscore_show', { 'id': gameObjectScore.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

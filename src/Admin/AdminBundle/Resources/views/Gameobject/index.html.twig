@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gameobjects list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+                <th>Behaviours</th>
+                <th>Levelmax</th>
+                <th>Offset</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>IconFilename</th>
+                <th>ImageFilename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gameObject in gameObjects %}
+            <tr>
+                <td><a href="{{ path('gameobject_show', { 'id': gameObject.id }) }}">{{ gameObject.id }}</a></td>
+                <td>{% if gameObject.actions %}{{ gameObject.actions|join(', ') }}{% endif %}</td>
+                <td>{% if gameObject.behaviours %}{{ gameObject.behaviours|join(', ') }}{% endif %}</td>
+                <td>{{ gameObject.levelMax }}</td>
+                <td>{{ gameObject.offset }}</td>
+                <td>{{ gameObject.name }}</td>
+                <td>{{ gameObject.description }}</td>
+                <td>{{ gameObject.iconFilename }}</td>
+                <td>{{ gameObject.imageFilename }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gameobject_show', { 'id': gameObject.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gameobject_edit', { 'id': gameObject.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gameobject_new') }}">Create a new gameObject</a>
+        </li>
+    </ul>
+{% endblock %}

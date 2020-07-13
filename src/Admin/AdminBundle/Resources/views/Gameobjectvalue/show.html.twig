@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gameobjectvalue</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gameObjectValue.id }}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{{ gameObjectValue.value }}</td>
+            </tr>
+            <tr>
+                <th>Costmultiplicator</th>
+                <td>{{ gameObjectValue.multiplicator }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gameobjectvalue_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

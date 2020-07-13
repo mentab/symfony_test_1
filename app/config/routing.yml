@@ -1,3 +1,15 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+admin_admin:
+    resource: "@AdminAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+client_client:
+    resource: "@ClientClientBundle/Controller/"
+    type:     annotation
+    prefix:   /client
+
+front_front:
+    resource: "@FrontFrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

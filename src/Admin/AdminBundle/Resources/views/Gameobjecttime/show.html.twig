@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gameobjecttime</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gameObjectTime.id }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{ gameObjectTime.time }}</td>
+            </tr>
+            <tr>
+                <th>Multiplicator</th>
+                <td>{{ gameObjectTime.multiplicator }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gameobjecttime_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
