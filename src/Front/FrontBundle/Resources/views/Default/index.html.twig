@@ -1,1 +1,14 @@
-Hello World!
+{% extends '@AdminAdmin/base.html.twig' %}
+
+{% block body %}
+    <h1>Front Index</h1>
+
+     <ul>
+        <li>
+            <a href="{{ path('admin_homepage') }}">Admin</a>
+        </li>
+        <li>
+            <a href="{{ path('client_homepage') }}">Client</a>
+        </li>
+    </ul>
+{% endblock %}

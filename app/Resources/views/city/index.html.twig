@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cities list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastupdate</th>
+                <th>Trade</th>
+                <th>Score</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Iconfilename</th>
+                <th>Imagefilename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for city in cities %}
+            <tr>
+                <td><a href="{{ path('city_show', { 'id': city.id }) }}">{{ city.id }}</a></td>
+                <td>{{ city.lastUpdate }}</td>
+                <td>{{ city.trade }}</td>
+                <td>{{ city.score }}</td>
+                <td>{{ city.name }}</td>
+                <td>{{ city.description }}</td>
+                <td>{{ city.iconFilename }}</td>
+                <td>{{ city.imageFilename }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('city_show', { 'id': city.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('city_edit', { 'id': city.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('city_new') }}">Create a new city</a>
+        </li>
+    </ul>
+{% endblock %}

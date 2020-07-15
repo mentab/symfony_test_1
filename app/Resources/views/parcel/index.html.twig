@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Parcels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parcel in parcels %}
+            <tr>
+                <td><a href="{{ path('parcel_show', { 'id': parcel.id }) }}">{{ parcel.id }}</a></td>
+                <td>{{ parcel.city }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('parcel_show', { 'id': parcel.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('parcel_edit', { 'id': parcel.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('parcel_new') }}">Create a new parcel</a>
+        </li>
+    </ul>
+{% endblock %}
