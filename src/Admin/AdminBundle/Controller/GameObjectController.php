@@ -91,13 +91,23 @@ class GameObjectController extends Controller
      * @Route("/{id}/edit", name="gameobject_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, GameObject $gameObject)
+    public function editAction(Request $request, GameObject $gameObject, FileUploader $fileUploader)
     {
         $deleteForm = $this->createDeleteForm($gameObject);
         $editForm = $this->createForm('Admin\AdminBundle\Form\GameObjectType', $gameObject);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $imageFile = $editForm->get('image')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $gameObject->setImageFilename($imageFileName);
+            }
+            $imageFile = $editForm->get('icon')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $gameObject->setIconFilename($imageFileName);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('gameobject_edit', array('id' => $gameObject->getId()));

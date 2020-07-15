@@ -70,6 +70,6 @@ class GameObjectCategoryType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'Admin\AdminBundle_gameobjectcategory';
+        return 'AdminAdminBundle_gameobjectcategory';
     }
 }

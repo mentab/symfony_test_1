@@ -29,7 +29,7 @@ class GameObjectTimeType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'Admin\AdminBundle_gameobjecttime';
+        return 'AdminAdminBundle_gameobjecttime';
     }
 
 

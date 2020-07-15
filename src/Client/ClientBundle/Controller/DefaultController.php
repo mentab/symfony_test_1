@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('ClientClientBundle:Default:index.html.twig');
+        return $this->render('@ClientClient/Default/index.html.twig');
     }
 }

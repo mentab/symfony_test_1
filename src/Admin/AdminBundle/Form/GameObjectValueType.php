@@ -29,7 +29,7 @@ class GameObjectValueType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'Admin\AdminBundle_gameobjectvalue';
+        return 'AdminAdminBundle_gameobjectvalue';
     }
 
 

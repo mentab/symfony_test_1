@@ -29,7 +29,7 @@ class GameObjectScoreType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'Admin\AdminBundle_gameobjectscore';
+        return 'AdminAdminBundle_gameobjectscore';
     }
 
 
