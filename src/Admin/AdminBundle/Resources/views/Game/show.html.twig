@@ -1,0 +1,48 @@
+{% extends '@AdminAdmin/base.html.twig' %}
+
+{% block body %}
+    <h1>Game</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ game.id }}</td>
+            </tr>
+            <tr>
+                <th>Server</th>
+                <td>{{ game.server }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ game.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ game.description }}</td>
+            </tr>
+            <tr>
+                <th>Iconfilename</th>
+                <td>{{ game.iconFilename }}</td>
+            </tr>
+            <tr>
+                <th>Imagefilename</th>
+                <td>{{ game.imageFilename }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('game_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('game_edit', { 'id': game.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

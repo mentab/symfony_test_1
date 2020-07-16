@@ -1,0 +1,53 @@
+{% extends '@AdminAdmin/base.html.twig' %}
+
+{% block body %}
+    <h1>Servers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Maxplayer</th>
+                <th>Player</th>
+                <th>Map</th>
+                <th>Offset</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Iconfilename</th>
+                <th>Imagefilename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for server in servers %}
+            <tr>
+                <td><a href="{{ path('server_show', { 'id': server.id }) }}">{{ server.id }}</a></td>
+                <td>{{ server.maxPlayer }}</td>
+                <td>{{ server.player }}</td>
+                <td>{{ server.map }}</td>
+                <td>{{ server.offset }}</td>
+                <td>{{ server.name }}</td>
+                <td>{{ server.description }}</td>
+                <td>{{ server.iconFilename }}</td>
+                <td>{{ server.imageFilename }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('server_show', { 'id': server.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('server_edit', { 'id': server.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('server_new') }}">Create a new server</a>
+        </li>
+    </ul>
+{% endblock %}

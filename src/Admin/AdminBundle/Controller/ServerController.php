@@ -26,7 +26,7 @@ class ServerController extends Controller
 
         $servers = $em->getRepository('AdminAdminBundle:Server')->findAll();
 
-        return $this->render('server/index.html.twig', array(
+        return $this->render('@AdminAdmin/Server/index.html.twig', array(
             'servers' => $servers,
         ));
     }
@@ -51,7 +51,7 @@ class ServerController extends Controller
             return $this->redirectToRoute('server_show', array('id' => $server->getId()));
         }
 
-        return $this->render('server/new.html.twig', array(
+        return $this->render('@AdminAdmin/Server/new.html.twig', array(
             'server' => $server,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ServerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($server);
 
-        return $this->render('server/show.html.twig', array(
+        return $this->render('@AdminAdmin/Server/show.html.twig', array(
             'server' => $server,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class ServerController extends Controller
             return $this->redirectToRoute('server_edit', array('id' => $server->getId()));
         }
 
-        return $this->render('server/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Server/edit.html.twig', array(
             'server' => $server,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

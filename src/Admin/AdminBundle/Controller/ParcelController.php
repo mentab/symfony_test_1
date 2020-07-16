@@ -26,7 +26,7 @@ class ParcelController extends Controller
 
         $parcels = $em->getRepository('AdminAdminBundle:Parcel')->findAll();
 
-        return $this->render('parcel/index.html.twig', array(
+        return $this->render('@AdminAdmin/Parcel/index.html.twig', array(
             'parcels' => $parcels,
         ));
     }
@@ -51,7 +51,7 @@ class ParcelController extends Controller
             return $this->redirectToRoute('parcel_show', array('id' => $parcel->getId()));
         }
 
-        return $this->render('parcel/new.html.twig', array(
+        return $this->render('@AdminAdmin/Parcel/new.html.twig', array(
             'parcel' => $parcel,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ParcelController extends Controller
     {
         $deleteForm = $this->createDeleteForm($parcel);
 
-        return $this->render('parcel/show.html.twig', array(
+        return $this->render('@AdminAdmin/Parcel/show.html.twig', array(
             'parcel' => $parcel,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class ParcelController extends Controller
             return $this->redirectToRoute('parcel_edit', array('id' => $parcel->getId()));
         }
 
-        return $this->render('parcel/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Parcel/edit.html.twig', array(
             'parcel' => $parcel,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

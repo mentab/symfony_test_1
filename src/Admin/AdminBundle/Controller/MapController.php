@@ -26,7 +26,7 @@ class MapController extends Controller
 
         $maps = $em->getRepository('AdminAdminBundle:Map')->findAll();
 
-        return $this->render('map/index.html.twig', array(
+        return $this->render('@AdminAdmin/Map/index.html.twig', array(
             'maps' => $maps,
         ));
     }
@@ -51,7 +51,7 @@ class MapController extends Controller
             return $this->redirectToRoute('map_show', array('id' => $map->getId()));
         }
 
-        return $this->render('map/new.html.twig', array(
+        return $this->render('@AdminAdmin/Map/new.html.twig', array(
             'map' => $map,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class MapController extends Controller
     {
         $deleteForm = $this->createDeleteForm($map);
 
-        return $this->render('map/show.html.twig', array(
+        return $this->render('@AdminAdmin/Map/show.html.twig', array(
             'map' => $map,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class MapController extends Controller
             return $this->redirectToRoute('map_edit', array('id' => $map->getId()));
         }
 
-        return $this->render('map/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Map/edit.html.twig', array(
             'map' => $map,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

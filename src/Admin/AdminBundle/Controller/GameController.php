@@ -26,7 +26,7 @@ class GameController extends Controller
 
         $games = $em->getRepository('AdminAdminBundle:Game')->findAll();
 
-        return $this->render('game/index.html.twig', array(
+        return $this->render('@AdminAdmin/Game/index.html.twig', array(
             'games' => $games,
         ));
     }
@@ -51,7 +51,7 @@ class GameController extends Controller
             return $this->redirectToRoute('game_show', array('id' => $game->getId()));
         }
 
-        return $this->render('game/new.html.twig', array(
+        return $this->render('@AdminAdmin/Game/new.html.twig', array(
             'game' => $game,
             'form' => $form->createView(),
         ));
@@ -91,7 +91,7 @@ class GameController extends Controller
             return $this->redirectToRoute('game_edit', array('id' => $game->getId()));
         }
 
-        return $this->render('game/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Game/edit.html.twig', array(
             'game' => $game,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

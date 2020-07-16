@@ -26,7 +26,7 @@ class FactionController extends Controller
 
         $factions = $em->getRepository('AdminAdminBundle:Faction')->findAll();
 
-        return $this->render('faction/index.html.twig', array(
+        return $this->render('@AdminAdmin/Faction/index.html.twig', array(
             'factions' => $factions,
         ));
     }
@@ -51,7 +51,7 @@ class FactionController extends Controller
             return $this->redirectToRoute('faction_show', array('id' => $faction->getId()));
         }
 
-        return $this->render('faction/new.html.twig', array(
+        return $this->render('@AdminAdmin/Faction/new.html.twig', array(
             'faction' => $faction,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class FactionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($faction);
 
-        return $this->render('faction/show.html.twig', array(
+        return $this->render('@AdminAdmin/Faction/show.html.twig', array(
             'faction' => $faction,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class FactionController extends Controller
             return $this->redirectToRoute('faction_edit', array('id' => $faction->getId()));
         }
 
-        return $this->render('faction/edit.html.twig', array(
+        return $this->render('@AdminAdmin/Faction/edit.html.twig', array(
             'faction' => $faction,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
