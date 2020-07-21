@@ -9,14 +9,14 @@ trait DescriptibleImageTrait
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="icon_filename", type="string", length=255)
+	 * @ORM\Column(name="icon_filename", type="string", length=255, nullable=true)
 	 */
 	private $iconFilename;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="image_filename", type="string", length=255)
+	 * @ORM\Column(name="image_filename", type="string", length=255, nullable=true)
 	 */
 	private $imageFilename;
 

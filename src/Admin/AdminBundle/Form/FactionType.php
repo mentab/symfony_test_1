@@ -13,8 +13,13 @@ class FactionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('offset')->add('name')->add('description')->add('iconFilename')->add('imageFilename')->add('gameObjects');
-    }/**
+        $builder
+            ->add('offset')
+            ->add('name')
+            ->add('description');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +36,4 @@ class FactionType extends AbstractType
     {
         return 'admin_adminbundle_faction';
     }
-
-
 }

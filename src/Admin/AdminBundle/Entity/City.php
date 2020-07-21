@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Admin\AdminBundle\Traits\DescriptibleTextTrait;
 use Admin\AdminBundle\Traits\DescriptibleImageTrait;
 
+use \Datetime;
+
 /**
  * City
  *
@@ -30,7 +32,7 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="last_update", type="string", length=255)
+     * @ORM\Column(name="last_update", type="datetime")
      */
     private $lastUpdate;
 
@@ -55,16 +57,20 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="trade", type="string", length=255)
+     * @ORM\Column(name="trade", type="string", length=255, nullable=true)
      */
     private $trade;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="score", type="string", length=255)
+     * @ORM\Column(name="score", type="string", length=255, nullable=true)
      */
     private $score;
+
+    public function __construct() {
+        $this->lastUpdate = new DateTime();
+    }
 
     /**
      * Get id

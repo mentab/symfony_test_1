@@ -13,8 +13,12 @@ class CityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('lastUpdate')->add('trade')->add('score')->add('name')->add('description')->add('iconFilename')->add('imageFilename')->add('gameObjectGroups')->add('gameObjectQueues');
-    }/**
+        $builder
+            ->add('name')
+            ->add('description');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +35,4 @@ class CityType extends AbstractType
     {
         return 'admin_adminbundle_city';
     }
-
-
 }

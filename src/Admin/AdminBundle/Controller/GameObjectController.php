@@ -43,7 +43,7 @@ class GameObjectController extends Controller
     public function newAction(Request $request, FileUploader $fileUploader)
     {
         $gameObject = new Gameobject();
-        $form = $this->createForm('AdminAdminBundle\Form\GameObjectType', $gameObject);
+        $form = $this->createForm('Admin\AdminBundle\Form\GameObjectType', $gameObject);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

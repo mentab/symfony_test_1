@@ -13,8 +13,17 @@ class PlayerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('faction')->add('city')->add('alliance')->add('name')->add('description')->add('iconFilename')->add('imageFilename');
-    }/**
+        $builder
+            ->add('faction')
+            ->add('city')
+            ->add('alliance')
+            ->add('name')
+            ->add('description')
+            ->add('iconFilename')
+            ->add('imageFilename');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +40,4 @@ class PlayerType extends AbstractType
     {
         return 'admin_adminbundle_player';
     }
-
-
 }

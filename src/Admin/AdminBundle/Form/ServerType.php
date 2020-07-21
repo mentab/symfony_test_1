@@ -13,8 +13,14 @@ class ServerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('maxPlayer')->add('player')->add('map')->add('offset')->add('name')->add('description')->add('iconFilename')->add('imageFilename');
-    }/**
+        $builder
+            ->add('maxPlayer')
+            ->add('offset')
+            ->add('name')
+            ->add('description');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +37,4 @@ class ServerType extends AbstractType
     {
         return 'admin_adminbundle_server';
     }
-
-
 }

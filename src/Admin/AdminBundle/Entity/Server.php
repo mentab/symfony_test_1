@@ -35,14 +35,14 @@ class Server
     /**
      * @var string
      *
-     * @ORM\Column(name="player", type="string", length=255)
+     * @ORM\Column(name="player", type="string", length=255, nullable=true)
      */
     private $player;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="map", type="string", length=255)
+     * @ORM\Column(name="map", type="string", length=255, nullable=true)
      */
     private $map;
 
@@ -52,6 +52,12 @@ class Server
      * @ORM\Column(name="offset", type="string", length=255)
      */
     private $offset;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Admin\AdminBundle\Entity\Game", inversedBy="servers", cascade={"persist"})
+     * @ORM\JoinColumn(name="game_id", referencedColumnName="id")
+     */
+    private $game;
 
     /**
      * Get id
@@ -157,6 +163,30 @@ class Server
     public function getOffset()
     {
         return $this->offset;
+    }
+
+    /**
+     * Set game
+     *
+     * @param \Admin\AdminBundle\Entity\Game $game
+     *
+     * @return Server
+     */
+    public function setGame($game)
+    {
+        $this->game = $game;
+
+        return $this;
+    }
+
+    /**
+     * Get game
+     *
+     * @return \Charlotte\MainBundle\Entity\Game
+     */
+    public function getGame()
+    {
+        return $this->game;
     }
 }
 

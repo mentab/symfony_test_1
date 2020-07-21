@@ -67,7 +67,7 @@ class GameController extends Controller
     {
         $deleteForm = $this->createDeleteForm($game);
 
-        return $this->render('game/show.html.twig', array(
+        return $this->render('@AdminAdmin/Game/show.html.twig', array(
             'game' => $game,
             'delete_form' => $deleteForm->createView(),
         ));

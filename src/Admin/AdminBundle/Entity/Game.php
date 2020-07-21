@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Admin\AdminBundle\Traits\DescriptibleTextTrait;
 use Admin\AdminBundle\Traits\DescriptibleImageTrait;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Game
  *
@@ -26,11 +28,14 @@ class Game
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="server", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Admin\AdminBundle\Entity\Server", mappedBy="game", cascade={"persist"})
      */
-    private $server;
+    private $servers;
+
+    public function __construct()
+    {
+        $this->servers = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -43,27 +48,47 @@ class Game
     }
 
     /**
-     * Set server
+     * Add server
      *
-     * @param string $server
-     *
+     * @param \Admin\AdminBundle\Entity\Server $server
      * @return Game
      */
-    public function setServer($server)
+    public function addServer(\Admin\AdminBundle\Entity\Server $server)
     {
-        $this->server = $server;
+        var_dump('addServer');
+        die();
 
+        $this->servers[] = $server;
+        $server->setGame($this);
         return $this;
     }
 
     /**
-     * Get server
+     * Remove gameObjectGroup
      *
-     * @return string
+     * @param \Admin\AdminBundle\Entity\Server $server
      */
-    public function getServer()
+    public function removeServer(\Admin\AdminBundle\Entity\Server $server)
     {
-        return $this->server;
+        $this->servers->removeElement($server);
+    }
+
+    /**
+     * Get servers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServers()
+    {
+        return $this->servers;
+    }
+
+    /**
+     * Remove All servers
+     */
+    public function removeAllServerss()
+    {
+        $this->servers =   new ArrayCollection();
     }
 }
 

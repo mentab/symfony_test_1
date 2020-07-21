@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class GameType extends AbstractType
 {
     /**
@@ -13,8 +15,17 @@ class GameType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('server')->add('name')->add('description')->add('iconFilename')->add('imageFilename');
-    }/**
+        $builder
+            ->add('name')
+            ->add('description')
+            ->add('servers', EntityType::class, array(
+                'class' => 'AdminAdminBundle:Server',
+                'choice_label' => 'name',
+                'multiple' => true
+            ));
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
@@ -31,6 +42,4 @@ class GameType extends AbstractType
     {
         return 'admin_adminbundle_game';
     }
-
-
 }
