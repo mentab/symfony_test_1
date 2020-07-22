@@ -55,6 +55,12 @@ class City
     private $gameObjectQueues;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="cities")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     */
+    private $player;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="trade", type="string", length=255, nullable=true)
@@ -186,6 +192,30 @@ class City
     public function removeAllGameObjectQueues()
     {
         $this->gameObjectQueues =   new ArrayCollection();
+    }
+
+    /**
+     * Set player
+     *
+     * @param string $player
+     *
+     * @return Player
+     */
+    public function setPlayer($player)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return string
+     */
+    public function getPlayer()
+    {
+        return $this->player;
     }
 
     /**

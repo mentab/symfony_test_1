@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class PlayerType extends AbstractType
 {
     /**
@@ -14,8 +16,14 @@ class PlayerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('faction')
-            ->add('city')
+            ->add('faction', EntityType::class, array(
+                'class' => 'AdminAdminBundle:Faction',
+                'choice_label' => 'name',
+            ))
+            ->add('server', EntityType::class, array(
+                'class' => 'AdminAdminBundle:Server',
+                'choice_label' => 'name',
+            ))
             ->add('alliance')
             ->add('name')
             ->add('description')

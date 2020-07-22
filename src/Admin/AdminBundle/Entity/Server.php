@@ -33,11 +33,9 @@ class Server
     private $maxPlayer;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="player", type="string", length=255, nullable=true)
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="server")
      */
-    private $player;
+    private $players;
 
     /**
      * @var string
@@ -93,28 +91,45 @@ class Server
         return $this->maxPlayer;
     }
 
-    /**
-     * Set player
+     /**
+     * Add player
      *
-     * @param string $player
-     *
+     * @param \Admin\AdminBundle\Entity\Player $player
      * @return Server
      */
-    public function setPlayer($player)
+    public function addPlayer(\Admin\AdminBundle\Entity\Player $player)
     {
-        $this->player = $player;
+        $this->players[] = $player;
 
         return $this;
     }
 
     /**
-     * Get player
+     * Remove player
      *
-     * @return string
+     * @param \Admin\AdminBundle\Entity\Player $player
      */
-    public function getPlayer()
+    public function removePlayer(\Admin\AdminBundle\Entity\Player $player)
     {
-        return $this->player;
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * Remove All players
+     */
+    public function removeAllPlayers()
+    {
+        $this->players =   new ArrayCollection();
     }
 
     /**

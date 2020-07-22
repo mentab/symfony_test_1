@@ -11,11 +11,21 @@
             </tr>
             <tr>
                 <th>Faction</th>
-                <td>{{ player.faction }}</td>
+                <td>{{ player.faction ? player.faction.name : '' }}</td>
+            </tr>
+            <tr>
+                <th>Server</th>
+                <td>{{ player.server ? player.server.name : '' }}</td>
             </tr>
             <tr>
                 <th>City</th>
-                <td>{{ player.city }}</td>
+                <td>
+                    <ul>
+                        {% for city in player.cities %}
+                            <li>{{ city.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             <tr>
                 <th>Alliance</th>

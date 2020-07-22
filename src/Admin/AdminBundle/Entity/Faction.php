@@ -31,6 +31,11 @@ class Faction
     private $gameObjects;
 
     /**
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="faction")
+     */
+    private $players;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="offset", type="string", length=255)
@@ -86,6 +91,47 @@ class Faction
     public function removeAllGameObjects()
     {
         $this->gameObjects =   new ArrayCollection();
+    }
+
+    /**
+     * Add player
+     *
+     * @param \Admin\AdminBundle\Entity\Player $player
+     * @return Faction
+     */
+    public function addPlayer(\Admin\AdminBundle\Entity\Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param \Admin\AdminBundle\Entity\Player $player
+     */
+    public function removePlayer(\Admin\AdminBundle\Entity\Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * Remove All players
+     */
+    public function removeAllPlayers()
+    {
+        $this->players =   new ArrayCollection();
     }
 
     /**

@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class CityType extends AbstractType
 {
     /**
@@ -15,7 +17,11 @@ class CityType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description');
+            ->add('description')
+            ->add('player', EntityType::class, array(
+                'class' => 'AdminAdminBundle:Player',
+                'choice_label' => 'name',
+            ));
     }
 
     /**

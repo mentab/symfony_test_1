@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Faction</th>
+                <th>Server</th>
                 <th>City</th>
                 <th>Alliance</th>
                 <th>Name</th>
@@ -21,8 +22,15 @@
         {% for player in players %}
             <tr>
                 <td><a href="{{ path('player_show', { 'id': player.id }) }}">{{ player.id }}</a></td>
-                <td>{{ player.faction }}</td>
-                <td>{{ player.city }}</td>
+                <td>{{ player.faction ? player.faction.name : '' }}</td>
+                <td>{{ player.server ? player.server.name : '' }}</td>
+                <td>
+                    <ul>
+                        {% for city in player.cities %}
+                            <li>{{ city.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
                 <td>{{ player.alliance }}</td>
                 <td>{{ player.name }}</td>
                 <td>{{ player.description }}</td>

@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Lastupdate</th>
+                <th>Player</th>
                 <th>Trade</th>
                 <th>Score</th>
                 <th>Name</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td><a href="{{ path('city_show', { 'id': city.id }) }}">{{ city.id }}</a></td>
                 <td>{{ city.lastUpdate | date }}</td>
+                <td>{{ city.player ? city.player.name : '' }}</td>
                 <td>{{ city.trade }}</td>
                 <td>{{ city.score }}</td>
                 <td>{{ city.name }}</td>

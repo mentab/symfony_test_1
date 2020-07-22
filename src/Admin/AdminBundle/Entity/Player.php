@@ -26,18 +26,21 @@ class Player
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="faction", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Faction", inversedBy="players")
+     * @ORM\JoinColumn(name="faction_id", referencedColumnName="id")
      */
     private $faction;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Server", inversedBy="players")
+     * @ORM\JoinColumn(name="server_id", referencedColumnName="id")
      */
-    private $city;
+    private $server;
+
+    /**
+     * @ORM\OneToMany(targetEntity="City", mappedBy="player")
+     */
+    private $cities;
 
     /**
      * @var string
@@ -81,27 +84,68 @@ class Player
     }
 
     /**
-     * Set city
+     * Set server
      *
-     * @param string $city
+     * @param string $server
      *
      * @return Player
      */
-    public function setCity($city)
+    public function setServer($server)
     {
-        $this->city = $city;
+        $this->server = $server;
 
         return $this;
     }
 
     /**
-     * Get city
+     * Get server
      *
      * @return string
      */
-    public function getCity()
+    public function getServer()
     {
-        return $this->city;
+        return $this->server;
+    }
+
+    /**
+     * Add city
+     *
+     * @param \Admin\AdminBundle\Entity\City $city
+     * @return City
+     */
+    public function addCity(\Admin\AdminBundle\Entity\City $city)
+    {
+        $this->cities[] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Remove city
+     *
+     * @param \Admin\AdminBundle\Entity\City $city
+     */
+    public function removeCity(\Admin\AdminBundle\Entity\City $city)
+    {
+        $this->cities->removeElement($city);
+    }
+
+    /**
+     * Get cities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * Remove All cities
+     */
+    public function removeAllCities()
+    {
+        $this->cities =   new ArrayCollection();
     }
 
     /**
