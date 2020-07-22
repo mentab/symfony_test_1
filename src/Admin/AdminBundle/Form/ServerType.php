@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class ServerType extends AbstractType
 {
     /**
@@ -17,7 +19,11 @@ class ServerType extends AbstractType
             ->add('maxPlayer')
             ->add('offset')
             ->add('name')
-            ->add('description');
+            ->add('description')
+            ->add('game', EntityType::class, array(
+                'class' => 'AdminAdminBundle:Game',
+                'choice_label' => 'name',
+            ));
     }
 
     /**

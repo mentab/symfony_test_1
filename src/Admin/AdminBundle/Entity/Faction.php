@@ -26,11 +26,7 @@ class Faction
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="GameObject")
-     * @ORM\JoinTable(name="faction_game_objects",
-     *      joinColumns={@ORM\JoinColumn(name="faction_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="GameObject", mappedBy="faction")
      */
     private $gameObjects;
 

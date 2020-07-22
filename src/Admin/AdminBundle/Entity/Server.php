@@ -54,7 +54,7 @@ class Server
     private $offset;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Admin\AdminBundle\Entity\Game", inversedBy="servers", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Admin\AdminBundle\Entity\Game", inversedBy="servers")
      * @ORM\JoinColumn(name="game_id", referencedColumnName="id")
      */
     private $game;

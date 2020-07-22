@@ -28,7 +28,7 @@ class Game
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Admin\AdminBundle\Entity\Server", mappedBy="game", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Admin\AdminBundle\Entity\Server", mappedBy="game")
      */
     private $servers;
 
@@ -55,11 +55,8 @@ class Game
      */
     public function addServer(\Admin\AdminBundle\Entity\Server $server)
     {
-        var_dump('addServer');
-        die();
-
         $this->servers[] = $server;
-        $server->setGame($this);
+
         return $this;
     }
 
@@ -91,4 +88,3 @@ class Game
         $this->servers =   new ArrayCollection();
     }
 }
-

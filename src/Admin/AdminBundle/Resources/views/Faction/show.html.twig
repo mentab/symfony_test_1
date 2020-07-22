@@ -29,6 +29,16 @@
                 <th>Imagefilename</th>
                 <td>{{ faction.imageFilename }}</td>
             </tr>
+            <tr>
+                <th>GameObjects</th>
+                <td>
+                    <ul>
+                        {% for gameObject in faction.gameObjects %}
+                            <li>{{ gameObject.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
         </tbody>
     </table>
 

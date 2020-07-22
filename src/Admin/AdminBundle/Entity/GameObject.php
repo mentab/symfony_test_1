@@ -82,7 +82,8 @@ class GameObject
     private $levelMax;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Faction", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Faction", inversedBy="gameObjects")
+     * @ORM\JoinColumn(name="faction_id", referencedColumnName="id")
      */
     private $faction;
 
