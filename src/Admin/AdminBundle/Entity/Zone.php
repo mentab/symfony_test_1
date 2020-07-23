@@ -29,12 +29,13 @@ class Zone
     private $terrain;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Parcel")
-     *
-     * @ORM\JoinTable(name="zone_parcels",
-     *      joinColumns={@ORM\JoinColumn(name="parcel_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="zone_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\ManyToOne(targetEntity="Map", inversedBy="zones")
+     * @ORM\JoinColumn(name="map_id", referencedColumnName="id")
+     */
+    private $map;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Parcel", mappedBy="zone")
      */
     private $parcels;
 
@@ -94,6 +95,31 @@ class Zone
     public function removeParcel(\Admin\AdminBundle\Entity\Parcel $parcel)
     {
         $this->parcels->removeElement($parcel);
+    }
+
+
+    /**
+     * Set map
+     *
+     * @param string $map
+     *
+     * @return Map
+     */
+    public function setMap($map)
+    {
+        $this->map = $map;
+
+        return $this;
+    }
+
+    /**
+     * Get map
+     *
+     * @return string
+     */
+    public function getMap()
+    {
+        return $this->map;
     }
 
     /**

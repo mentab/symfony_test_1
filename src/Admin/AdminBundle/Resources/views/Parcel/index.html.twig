@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>City</th>
+                <th>Zone</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('parcel_show', { 'id': parcel.id }) }}">{{ parcel.id }}</a></td>
                 <td>{{ parcel.city }}</td>
+                <td>{{ parcel.zone ? parcel.zone.id : '' }}</td>
                 <td>
                     <ul>
                         <li>

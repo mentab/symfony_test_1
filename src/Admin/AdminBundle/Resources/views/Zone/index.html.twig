@@ -1,34 +1,38 @@
 {% extends '@AdminAdmin/base.html.twig' %}
 
 {% block body %}
-    <h1>Maps list</h1>
+    <h1>Zones list</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Zones</th>
+                <th>Terrain</th>
+                <th>Map</th>
+                <th>Parcels</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for map in maps %}
+        {% for zone in zones %}
             <tr>
-                <td><a href="{{ path('map_show', { 'id': map.id }) }}">{{ map.id }}</a></td>
+                <td><a href="{{ path('zone_show', { 'id': zone.id }) }}">{{ zone.id }}</a></td>
+                <td>{{ zone.terrain }}</td>
+                <td>{{ zone.map ? zone.map.id : '' }}</td>
                 <td>
                     <ul>
-                        {% for zone in map.zones %}
-                            {{ zone.id }}
+                        {% for parcel in zone.parcels %}
+                            {{ parcel.id }}
                         {% endfor %}
                     </ul>
                 </td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('map_show', { 'id': map.id }) }}">show</a>
+                            <a href="{{ path('zone_show', { 'id': zone.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('map_edit', { 'id': map.id }) }}">edit</a>
+                            <a href="{{ path('zone_edit', { 'id': zone.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +43,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('map_new') }}">Create a new map</a>
+            <a href="{{ path('zone_new') }}">Create a new zone</a>
         </li>
     </ul>
 {% endblock %}

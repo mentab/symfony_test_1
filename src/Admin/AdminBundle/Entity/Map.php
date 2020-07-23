@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Map
  *
  * @ORM\Table(name="map")
- * @ORM\Entity(repositoryClass="Admin\AdminBundle\Repository\MapRepository")
+ * @ORM\Entity
  */
 class Map
 {
@@ -22,12 +22,7 @@ class Map
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Zone")
-     *
-     * @ORM\JoinTable(name="map_zones",
-     *      joinColumns={@ORM\JoinColumn(name="zone_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="map_id", referencedColumnName="id", unique=true)}
-     *      )
+     * @ORM\OneToMany(targetEntity="Zone", mappedBy="map")
      */
     private $zones;
 

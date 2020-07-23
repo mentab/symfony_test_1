@@ -29,6 +29,12 @@ class Parcel
     private $city;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Zone", inversedBy="parcels")
+     * @ORM\JoinColumn(name="zone_id", referencedColumnName="id")
+     */
+    private $zone;
+
+    /**
      * Get id
      *
      * @return int
@@ -61,5 +67,28 @@ class Parcel
     {
         return $this->city;
     }
-}
 
+    /**
+     * Set zone
+     *
+     * @param string $zone
+     *
+     * @return Zone
+     */
+    public function setZone($zone)
+    {
+        $this->zone = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return string
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
+}

@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ParcelType extends AbstractType
+class ZoneType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,18 +16,20 @@ class ParcelType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('zone', EntityType::class, array(
-                'class' => 'AdminAdminBundle:Zone',
+            ->add('map', EntityType::class, array(
+                'class' => 'AdminAdminBundle:Map',
                 'choice_label' => 'id',
             ))
-            ->add('city');
-    }/**
+            ->add('terrain');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Admin\AdminBundle\Entity\Parcel'
+            'data_class' => 'Admin\AdminBundle\Entity\Zone'
         ));
     }
 
@@ -36,8 +38,6 @@ class ParcelType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'admin_adminbundle_parcel';
+        return 'admin_adminbundle_zone';
     }
-
-
 }
