@@ -33,7 +33,7 @@ class GameObjectScore
     /**
      * @var string
      *
-     * @ORM\Column(name="multiplicator", type="string", length=255)
+     * @ORM\Column(name="multiplicator", type="smallint")
      */
     private $multiplicator;
 

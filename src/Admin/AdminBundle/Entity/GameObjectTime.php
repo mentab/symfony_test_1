@@ -26,14 +26,14 @@ class GameObjectTime
 	/**
      * @var string
      *
-     * @ORM\Column(name="time", type="string", length=255)
+     * @ORM\Column(name="time", type="time")
      */
     private $time;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="multiplicator", type="string", length=255)
+     * @ORM\Column(name="multiplicator", type="smallint")
      */
     private $multiplicator;
 

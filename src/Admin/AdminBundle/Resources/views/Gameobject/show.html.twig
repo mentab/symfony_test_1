@@ -10,6 +10,30 @@
                 <td>{{ gameObject.id }}</td>
             </tr>
             <tr>
+                <th>Score</th>
+                <td>{% if gameObject.score %}<a href="{{ path('gameobjectscore_show', { 'id': gameObject.score.id }) }}">{{ gameObject.score.id }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{% if gameObject.time %}<a href="{{ path('gameobjecttime_show', { 'id': gameObject.time.id }) }}">{{ gameObject.time.id }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Maintenance</th>
+                <td>{% if gameObject.maintenance %}<a href="{{ path('gameobjectvalue_show', { 'id': gameObject.maintenance.id }) }}">{{ gameObject.maintenance.id }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{% if gameObject.cost %}<a href="{{ path('gameobjectvalue_show', { 'id': gameObject.cost.id }) }}">{{ gameObject.cost.id }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prod</th>
+                <td>{% if gameObject.prod %}<a href="{{ path('gameobjectvalue_show', { 'id': gameObject.prod.id }) }}">{{ gameObject.prod.id }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ gameObject.id }}</td>
+            </tr>
+            <tr>
                 <th>Action</th>
                 <td>{% if gameObject.actions %}{{ gameObject.actions|join(', ') }}{% endif %}</td>
             </tr>

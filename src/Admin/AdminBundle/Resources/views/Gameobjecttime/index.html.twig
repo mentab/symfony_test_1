@@ -16,7 +16,7 @@
         {% for gameObjectTime in gameObjectTimes %}
             <tr>
                 <td><a href="{{ path('gameobjecttime_show', { 'id': gameObjectTime.id }) }}">{{ gameObjectTime.id }}</a></td>
-                <td>{{ gameObjectTime.time }}</td>
+                <td>{{ gameObjectTime.time | date }}</td>
                 <td>{{ gameObjectTime.multiplicator }}</td>
                 <td>
                     <ul>

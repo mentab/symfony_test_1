@@ -16,7 +16,19 @@
         {% for gameObjectValue in gameObjectValues %}
             <tr>
                 <td><a href="{{ path('gameobjectvalue_show', { 'id': gameObjectValue.id }) }}">{{ gameObjectValue.id }}</a></td>
-                <td>{{ gameObjectValue.value }}</td>
+                <td>
+                    {% if gameObjectValue.gameObjectGroups %}
+                        {% for gameObjectGroup in gameObjectValue.gameObjectGroups %}
+                            {{ gameObjectGroup.id }}<br/>
+                            {% if gameObjectGroup.gameObject %}
+                                <a href="{{ path('gameobject_index', { 'id': gameObjectGroup.gameObject.id }) }}">{{ gameObjectGroup.gameObject.id }}</a><br/>
+                                {{ gameObjectGroup.gameObject.name }}<br/>
+                            {% endif %}
+                            {{ gameObjectGroup.level }}<br/>
+                            {{ gameObjectGroup.count }}
+                        {% endfor %}
+                    {% endif %}
+                </td>
                 <td>{{ gameObjectValue.multiplicator }}</td>
                 <td>
                     <ul>

@@ -10,11 +10,23 @@
                 <td>{{ gameObjectValue.id }}</td>
             </tr>
             <tr>
-                <th>Cost</th>
-                <td>{{ gameObjectValue.value }}</td>
+                <th>Value</th>
+                <td>
+                    {% if gameObjectValue.gameObjectGroups %}
+                        {% for gameObjectGroup in gameObjectValue.gameObjectGroups %}
+                            {{ gameObjectGroup.id }}<br/>
+                            {% if gameObjectGroup.gameObject %}
+                                <a href="{{ path('gameobject_index', { 'id': gameObjectGroup.gameObject.id }) }}">{{ gameObjectGroup.gameObject.id }}</a><br/>
+                                {{ gameObjectGroup.gameObject.name }}<br/>
+                            {% endif %}
+                            {{ gameObjectGroup.level }}<br/>
+                            {{ gameObjectGroup.count }}
+                        {% endfor %}
+                    {% endif %}
+                </td>
             </tr>
             <tr>
-                <th>Costmultiplicator</th>
+                <th>Multiplicator</th>
                 <td>{{ gameObjectValue.multiplicator }}</td>
             </tr>
         </tbody>

@@ -24,16 +24,18 @@ class GameObjectValue
 	private $id;
 
 	/**
-     * @var string
-     *
-     * @ORM\Column(name="value", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="GameObjectGroup")
+     * @ORM\JoinTable(name="game_object_values_game_object_groups",
+     *      joinColumns={@ORM\JoinColumn(name="game_object_value_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_object_id", referencedColumnName="id", unique=true)}
+     *      )
      */
-    private $value;
+    private $gameObjectGroups;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="multiplicator", type="string", length=255)
+     * @ORM\Column(name="multiplicator", type="smallint")
      */
     private $multiplicator;
 
@@ -47,28 +49,46 @@ class GameObjectValue
 		return $this->id;
 	}
 
-     /**
-     * Set value
+    /**
+     * Add gameObjectGroup
      *
-     * @param string $value
+     * @param \Admin\AdminBundle\Entity\GameObjectGroup $gameObjectGroup
      *
-     * @return GameObjectValue
+     * @return GameObject
      */
-    public function setValue($value)
+    public function addGameObjectGroup(\Admin\AdminBundle\Entity\GameObjectGroup $gameObjectGroup)
     {
-        $this->value = $value;
+        $this->gameObjectGroups[] = $gameObjectGroup;
 
         return $this;
     }
 
     /**
-     * Get value
+     * Remove gameObjectGroup
      *
-     * @return string
+     * @param \Admin\AdminBundle\Entity\GameObjectGroup $gameObjectGroup
      */
-    public function getValue()
+    public function removeGameObjectGroup(\Admin\AdminBundle\Entity\GameObjectGroup $gameObjectGroup)
     {
-        return $this->value;
+        $this->gameObjectGroups->removeElement($gameObjectGroup);
+    }
+
+    /**
+     * Get gameObjectGroups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGameObjectGroups()
+    {
+        return $this->gameObjectGroups;
+    }
+
+    /**
+     * Remove All gameObjectGroups
+     */
+    public function removeAllGameObjectGroups()
+    {
+        $this->gameObjectGroups =   new ArrayCollection();
     }
 
     /**

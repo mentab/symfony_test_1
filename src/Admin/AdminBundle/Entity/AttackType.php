@@ -27,7 +27,7 @@ class AttackType
     /**
      * @var string
      *
-     * @ORM\Column(name="offset", type="string", length=255)
+     * @ORM\Column(name="offset", type="smallint")
      */
     private $offset;
 

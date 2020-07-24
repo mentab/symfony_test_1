@@ -29,9 +29,16 @@ class GameObjectGroup
     /**
      * @var string
      *
-     * @ORM\Column(name="level", type="string", length=255)
+     * @ORM\Column(name="level", type="smallint")
      */
     private $level;
+
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="count", type="smallint")
+     */
+    private $count;
 
     /**
      * Get id
@@ -89,5 +96,29 @@ class GameObjectGroup
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * Set count
+     *
+     * @param string $count
+     *
+     * @return GameObjectGroup
+     */
+    public function setCount($count)
+    {
+        $this->count = $count;
+
+        return $this;
+    }
+
+    /**
+     * Get count
+     *
+     * @return string
+     */
+    public function getCount()
+    {
+        return $this->count;
     }
 }
