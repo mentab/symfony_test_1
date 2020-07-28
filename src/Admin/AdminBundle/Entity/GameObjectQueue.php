@@ -33,21 +33,19 @@ class GameObjectQueue
     /**
      * @var string
      *
-     * @ORM\Column(name="time", type="string", length=255)
+     * @ORM\Column(name="time", type="time")
      */
     private $time;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="from", type="string", length=255)
+     /**
+     * @ORM\ManyToOne(targetEntity="Parcel")
+     * @ORM\JoinColumn(name="from_parcel_id", referencedColumnName="id")
      */
     private $from;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="to", type="string", length=255)
+     /**
+     * @ORM\ManyToOne(targetEntity="Parcel")
+     * @ORM\JoinColumn(name="to_parcel_id", referencedColumnName="id")
      */
     private $to;
 
@@ -166,7 +164,7 @@ class GameObjectQueue
     }
 
     /**
-     * Get ot
+     * Get to
      *
      * @return string
      */
@@ -175,4 +173,3 @@ class GameObjectQueue
         return $this->to;
     }
 }
-
