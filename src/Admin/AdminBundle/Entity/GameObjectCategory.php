@@ -33,6 +33,11 @@ class GameObjectCategory
     private $offset;
 
     /**
+     * @ORM\OneToMany(targetEntity="GameObject", mappedBy="category")
+     */
+    private $gameObjects;
+
+    /**
      * Get id
      *
      * @return int
@@ -64,5 +69,47 @@ class GameObjectCategory
     public function getOffset()
     {
         return $this->offset;
+    }
+
+    /**
+     * Add gameObject
+     *
+     * @param \Admin\AdminBundle\Entity\GameObject $gameObject
+     *
+     * @return GameObjectQueue
+     */
+    public function addGameObject(\Admin\AdminBundle\Entity\GameObject $gameObject)
+    {
+        $this->gameObjects[] = $gameObject;
+
+        return $this;
+    }
+
+    /**
+     * Remove gameObject
+     *
+     * @param \Admin\AdminBundle\Entity\GameObject $gameObject
+     */
+    public function removeGameObject(\Admin\AdminBundle\Entity\GameObject $gameObject)
+    {
+        $this->gameObjects->removeElement($gameObject);
+    }
+
+    /**
+     * Get gameObjects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGameObjects()
+    {
+        return $this->gameObjects;
+    }
+
+    /**
+     * Remove All gameObjects
+     */
+    public function removeAllGameObjects()
+    {
+        $this->gameObjects =   new ArrayCollection();
     }
 }

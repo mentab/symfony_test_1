@@ -56,7 +56,8 @@ class GameObject
     private $prod;
 
 	/**
-     * @ORM\ManyToOne(targetEntity="GameObjectCategory", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="GameObjectCategory", inversedBy="gameObjects", cascade={"persist"})
+     * @ORM\JoinColumn(name="game_object_id", referencedColumnName="id")
      */
     private $category;
 
